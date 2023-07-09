@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% load bootstrap5 %}
+  {% bootstrap_css %}
+  {% bootstrap_javascript %}
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+
+        <title>Pricing example for Bootstrap</title>
+    </head>
+<!--    background:#f6f7f8;-->
+    <body style="background:#f6f7f8;min-height: 100%">
+
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 border-bottom box-shadow" style="background-color: rgb(209, 220, 150);">
+      <h5 class="my-0 mr-md-auto font-weight-normal">Терем-Ок</h5>
+      <nav class="my-2 my-md-0 mr-md-3">
+        <a class="p-2 text-dark" href="#">t.me/Terem-Ok</a>
+        <a class="p-2 text-dark" href="#">Terem-Ok@yandex.ru</a>
+      </nav>
+    </div>
+
+    <div class="form-signin">
+        <h5 align="center" style="margin-bottom: 60px;">Покупка недвижимости связана с риском</h5>
+        <h5 align="center" style="margin-bottom: 60px;">ТЕРЕМ-ОК - это сервис для анализа рисков при покупке индивидуального жилого дома</h5>
+        <h5 align="center" style="margin-bottom: 100px;">Рассчитайте свои риски и при покупке с нами</h5>
+    </div>
+
+    {% load static %}
+    {% block javascript %}
+    {% endblock %}
+
+    <div align="center">
+        <button id="t1" type="button" class="btn btn-lg btn-block btn-primary" style="border-radius: 40px; padding: 13px 60px; background-color:#f6f7f8;color:#800000;margin-right: 30px;transform: perspective(500px) rotateX(0deg) rotateY(0deg);">Посмотреть <br /> документы</button>
+        <script type="text/javascript">
+            document.getElementById("t1").onclick = function () {
+                location.href = "/documents";
+            };
+        </script>
+        <button onclick="window.location.href='/risks';" type="button" class="btn btn-lg btn-block btn-primary" style="border-radius: 40px; padding: 13px 60px; background-color:#f6f7f8;color:#800000;">Рассчитать <br /> риски</button>
+    </div>
+
+</body>
+</html>

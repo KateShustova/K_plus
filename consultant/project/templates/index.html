@@ -15,7 +15,7 @@
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
         {% load static %}
-        <img src="{% static 'img/Frame1.png' %}" width="140" alt="Пока не работает">
+        <img src="{% static 'img/Frame1.png' %}" width="150"  alt="Пока не работает">
       </a>
       <div class="collapse navbar-collapse d-flex justify-content-center" id="navbarSupportedContent">
         <ul class="navbar-nav">
@@ -30,10 +30,32 @@
     </div>
   </nav>
 
-  
+  <style>
+    .triangles {
+      list-style-type: "⊲ ";
+    }
+  </style>
+
   <div class="bg-image position-relative">
-    <img src="{% static 'img/cover.jpg' %}" width="100%">
-    <div class="mask position-absolute top-0 end-0 bottom-0 start-0 " style="background-color: rgba(0, 0, 0, 0.6)">
+    <img src="{% static 'img\cover.jpg' %}" width="100%">
+    <div class="mask position-absolute top-0 end-0 bottom-0 start-0 " style="background-color: rgba(0, 0, 0, 0.55)">
+      <div class="container d-flex h-100">
+        <div class="row">
+          <div class="d-flex col-lg-6 justify-content-center">
+            <img src="{% static 'img/лого.svg' %}" alt="Пока не работает">
+          </div>
+          <div class="col-lg-1"></div>
+          <div class="col-lg-5 d-flex align-items-center">
+            <ul class='triangles'>
+              <li  class="h2 text-white">Анализ рисков при покупке индивидуального жилого дома</li>
+              <br>
+              <li  class="h2 text-white">Подборка сервисов для проверки всех нюансов сделки</li>
+              <br>
+              <li  class="h2 text-white">Индивидуальная оценка рисков при заключении договора</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 

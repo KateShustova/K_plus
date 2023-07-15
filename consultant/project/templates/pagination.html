@@ -1,13 +1,26 @@
-<div>
-  <span>
-    {% if page_obj.has_previous %}
-      <a href="?page={{ page_obj.previous_page_number }}#qcont">Previous</a>
-    {% endif %}
-    <span>
-      Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-    </span>
-    {% if page_obj.has_next %}
-      <a id="btn2" href="?page={{ page_obj.next_page_number }}#qcont">Next</a>
-    {% endif %}
-  </span>
+<!--<div>-->
+<!--  <span>-->
+<!--    {% if page_obj.has_previous %}-->
+<!--      <a href="?page={{ page_obj.previous_page_number }}#qcont">Previous</a>-->
+<!--      <script>-->
+<!--        $("body").niceScroll();-->
+<!--      </script>-->
+<!--    {% endif %}-->
+<!--    <span>-->
+<!--      Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.-->
+<!--    </span>-->
+<!--    {% if page_obj.has_next %}-->
+<!--      <a id="btn2" href="?page={{ page_obj.next_page_number }}#qcont">Next</a>-->
+<!--    {% endif %}-->
+<!--  </span>-->
+<!--</div>-->
+<div align="center">
+  {% for employee in page_obj.paginator %}
+  <a href="?page={{forloop.counter}}#qcont" id="numbers_{{forloop.counter}}" class="button button_{{forloop.counter}}" style="border-radius: 40px; border: 2.5px solid #E86B52; padding: 5px 10px; color:#800000;margin-right: 25px;font-size: 20px;">{{forloop.counter}}</a>
+  {% endfor %}
+  <script>
+    var element = document.getElementById("numbers_{{ page_obj.number }}");
+    element.style = "border-radius: 40px; padding: 5px 10px; background-color:#E6E2E2;color:#800000;margin-right: 25px;border: 2.5px solid #E86B52;font-size: 20px;";
+  </script>
+  <br><br>
 </div>

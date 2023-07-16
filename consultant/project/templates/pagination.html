@@ -20,6 +20,17 @@
   {% endfor %}
   <script>
     var element = document.getElementById("numbers_{{ page_obj.number }}");
+    {% for employee in page_obj.paginator %}
+      if ({{forloop.counter}} != {{ page_obj.number }}){
+        var elem = document.getElementById("numbers_{{forloop.counter}}");
+        elem.onclick = function(e) {
+              var current = sessionStorage.getItem({{ page_obj.number }});
+                if (!current) {
+                  save_data_to_localstorage();
+                }
+        };
+      }
+    {% endfor %}
     element.style = "border-radius: 40px; padding: 5px 10px; background-color:#E6E2E2;color:#800000;margin-right: 25px;border: 2.5px solid #E86B52;font-size: 20px;";
   </script>
   <br><br>

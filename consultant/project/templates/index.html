@@ -34,7 +34,6 @@
       list-style-type: "⊲ ";
     }
   </style>
-
   <div class="bg-image position-relative">
     <img src="{% static 'img\cover.jpg' %}" width="100%" >
     <div class="mask position-absolute top-0 end-0 bottom-0 start-0 " style="background-color: rgba(0, 0, 0, 0.55)">
@@ -65,10 +64,15 @@
     <br><br>
     <div class="qcontainer " id="qcont">
       {% for employee in page_obj %}
-      <div id="d-q-ans-container_{{forloop.counter}}" class="num" style="border-radius: 80px; padding-top: 35px; width: 850px; margin:0 auto; background-color:#FFFFFF;color:#800000;text-align: center;">
-<!--        Вот тут нужен знак вопроса-->
-<!--        <img align="right" id="spr-info" src="{% static 'img\question.png' %}">-->
-        <h1 class="qtext_{{forloop.counter}}" id="mydiv" style="margin-bottom: 45px; color: #008000;" ><strong>Вопрос № {{forloop.counter}}</strong></h1>
+      <div id="d-q-ans-container_{{forloop.counter}}" class="" style="border-radius: 80px; padding-top: 35px; width: 850px; margin:0 auto; background-color:#FFFFFF;color:#800000;text-align: center;">
+        <img align="right" id="spr-info" src="{% static 'img\question.png' %}">
+        <script>
+          $('#spr-info').tooltip({
+            title: "Всплывающая подсказка",
+            placement: top,
+          });
+        </script>
+        <h1 class="qtext_{{forloop.counter}}" id="mydiv" style="margin-bottom: 45px; color: #008000;" ><strong>Вопрос № {{ page_obj.number }}</strong></h1>
         <span style="font-size: 160%; padding-left:10px;padding-right:10px" class="qtext_{{forloop.counter}}" ><strong>{{ employee.content }}</strong></span>
         <div>
           <br><br>

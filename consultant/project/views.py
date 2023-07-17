@@ -5,10 +5,10 @@ import json
 
 
 def index_page(request):
-    with open('project/test.json') as user_file:
+    with open('project/questions.json', encoding='utf-8') as user_file:
         object_list = json.loads(user_file.read())['questions']
 
-    paginator = Paginator(object_list, len(object_list))  # 3 employees per page
+    paginator = Paginator(object_list, len(object_list)) 
     page_num = request.GET.get('page', 1)
 
     try:

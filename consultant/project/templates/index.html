@@ -65,13 +65,10 @@
     <br><br>
     <div class="qcontainer " id="qcont">
       {% for employee in page_obj %}
-      <div id="d-q-ans-container_{{forloop.counter}}" class="" style="border-radius: 80px; padding-top: 35px; width: 850px; margin:0 auto; background-color:#FFFFFF;color:#800000;text-align: center;">
-        <img align="right" id="spr-info" src="{% static 'img\question.png' %}">
-        <script>
-<!--          вот тут нужен функционал всплывающего окна-->
-
-        </script>
-        <h1 class="qtext_{{forloop.counter}}" id="mydiv" style="margin-bottom: 45px; color: #008000;" ><strong>Вопрос № {{ page_obj.number }}</strong></h1>
+      <div id="d-q-ans-container_{{forloop.counter}}" class="num" style="border-radius: 80px; padding-top: 35px; width: 850px; margin:0 auto; background-color:#FFFFFF;color:#800000;text-align: center;">
+<!--        Вот тут нужен знак вопроса-->
+<!--        <img align="right" id="spr-info" src="{% static 'img\question.png' %}">-->
+        <h1 class="qtext_{{forloop.counter}}" id="mydiv" style="margin-bottom: 45px; color: #008000;" ><strong>Вопрос № {{forloop.counter}}</strong></h1>
         <span style="font-size: 160%; padding-left:10px;padding-right:10px" class="qtext_{{forloop.counter}}" ><strong>{{ employee.content }}</strong></span>
         <div>
           <br><br>
@@ -95,119 +92,31 @@
             </label>
           </div>
 
-          <script>
-              var a = document.getElementById("t_ans_35638_{{forloop.counter}}");
-              var b = document.getElementById("t_ans_35637_{{forloop.counter}}");
-              var v = document.getElementById("t_ans_35636_{{forloop.counter}}");
-              {% if page_obj.has_next %}
-                a.href = "?page={{ page_obj.next_page_number }}#qcont";
-                b.href = "?page={{ page_obj.next_page_number }}#qcont";
-                v.href = "?page={{ page_obj.next_page_number }}#qcont";
-              {% else %}
-                a.href = "#";
-                b.href = "#";
-                v.href = "#";
-              {% endif %}
-          </script>
-
-        <script>
-            function save_data_to_localstorage() {
-                var current = sessionStorage.getItem('risks');
-                if (!current) { // check if an item is already registered
-                  current = []; // if not, we initiate an empty array
-                } else {
-                  current = JSON.parse(current); // else parse whatever is in
-                }
-                const index = current.indexOf({{ page_obj.number }});
-                if (index == -1) {
-                    current.push({{ page_obj.number }});
-                }
-                sessionStorage.setItem('risks', JSON.stringify(current));
-                console.log(sessionStorage);
-            }
-
-            function update_data_in_localstorage(str) {
-              sessionStorage.setItem({{ page_obj.number }}, 1);
-              var current = sessionStorage.getItem('risks');
-                if (!current) {
-                  current = [];
-                } else {
-                  current = JSON.parse(current);
-                  const index = current.indexOf({{ page_obj.number }});
-                  if (index > -1) {
-                    current.splice(index, 1);
-                  }
-                  console.log(current);
-                }
-                sessionStorage.setItem('risks', JSON.stringify(current));
-                console.log(sessionStorage);
-            }
-
-            var div = document.getElementById('d-q-ans-container_{{forloop.counter}}');
-            var p1 = document.getElementById('t_ans_35636_{{forloop.counter}}');
-            var p2 = document.getElementById('t_ans_35637_{{forloop.counter}}');
-            var p3 = document.getElementById('t_ans_35638_{{forloop.counter}}');
-
-
-<!--            sessionStorage.clear();-->
-<!--            update_data_in_localstorage()-->
-<!--            save_data_to_localstorage();-->
-            p1.onclick = function(e) {
-                document.getElementById('d-q-ans-container_{{forloop.counter}}').setAttribute('data-last-value', p1.value);
-                update_data_in_localstorage();
-                if(document.getElementById('d-q-ans-container_{{forloop.counter}}').getAttribute("sub_id") != 0){
-                    let idd = document.getElementById('d-q-ans-container_{{forloop.counter}}').getAttribute("sub_id");
-                    if(document.getElementById('d-q-ans-container_' + idd) != null){
-                        document.getElementById('d-q-ans-container_' + idd).removeAttribute("style");
-                    }
-                }
-              };
-
-            p2.onclick = function(e) {
-                document.getElementById('d-q-ans-container_{{forloop.counter}}').setAttribute('data-last-value', p2.value);
-                update_data_in_localstorage();
-                if(document.getElementById('d-q-ans-container_{{forloop.counter}}').getAttribute("sub_id") != 0){
-                    let idd = document.getElementById('d-q-ans-container_{{forloop.counter}}').getAttribute("sub_id");
-                    console.log('d-q-ans-container_' + idd);
-                    if(document.getElementById('d-q-ans-container_' + idd) != null){
-                        document.getElementById('d-q-ans-container_' + idd).removeAttribute("style");
-                    }
-                }
-              };
-
-            p3.onclick = function(e) {
-              document.getElementById('d-q-ans-container_{{forloop.counter}}').setAttribute('data-last-value', p3.value);
-              save_data_to_localstorage();
-              if(document.getElementById('d-q-ans-container_{{forloop.counter}}').getAttribute("sub_id") != 0){
-                    let idd = document.getElementById('d-q-ans-container_{{forloop.counter}}').getAttribute("sub_id");
-                    if(document.getElementById('d-q-ans-container_' + idd) != null){
-                        document.getElementById('d-q-ans-container_' + idd).removeAttribute("style");
-                    }
-                }
-            };
-        </script>
-
         <br>
 
       </div>
     </div>
     {% endfor %}
-      <div id="risk-count" class = "risks" style="border-radius: 40px; padding-top: 8px; padding-bottom: 8px; width: 270px; margin:0 auto; background-color:#E3E0E0;color:#800000; border-top-left-radius: 0;border-top-right-radius: 0;text-align: center;">
+      <div id="risk-count" class = "risks" style="border-radius: 60px; padding-top: 8px; padding-bottom: 12px; width: 600px; margin:0 auto; background-color:#E3E0E0;color:#800000; border-top-left-radius: 0;border-top-right-radius: 0;text-align: center;">
         <span style="font-size: 180%; padding-left:10px;padding-right:10px;" id="risks" ><strong> </strong></span>
         <script>
+          function check(){
           let span = document.getElementById("risks");
-          if (sessionStorage.getItem("risks") === null || JSON.parse(sessionStorage.getItem("risks")).length == 0){
-            document.getElementById("risk-count").style += "display: none;";
-          }
-          else{
-            var str = "";
-            var t = JSON.parse(sessionStorage.getItem("risks"));
-            for (let i = 0; i < t.length; i++) {
-                str += t[i] + ", ";
-            }
-            span.innerText = "У вас " + JSON.parse(sessionStorage.getItem("risks")).length + " рисков \n Перейдите на вопросы " + str.substring(0, str.length - 2);
-          }
-          console.log(sessionStorage);
+                if (sessionStorage.getItem("risks") === null || JSON.parse(sessionStorage.getItem("risks")).length == 0){
+                  document.getElementById("risk-count").style.display = "none";
+                }
+                else{
+                  document.getElementById("risk-count").style.display = "block";
+                  var str = "";
+                  var t = JSON.parse(sessionStorage.getItem("risks"));
+                  for (let i = 0; i < t.length; i++) {
+                      str += t[i] + ", ";
+                  }
+                  span.innerText = "У вас " + JSON.parse(sessionStorage.getItem("risks")).length + " рисков \n Перейдите на вопросы " + str.substring(0, str.length - 2);
+                }
+                console.log(sessionStorage);
+        }
+        check();
         </script>
       </div>
       <br /><br class="height1" />
@@ -219,7 +128,95 @@
       </style>
       <button onclick="window.location.href='/risks';" type="button" class="btn btn-lg btn-block btn-primary" style="border: 1.8px solid #000000;border-radius: 40px; padding-top: 7px; width: 170px; height: 75px; margin:0 auto; background-color:#f6f7f8;color:#800000;text-align: center;font-size: 21px;text-transform: unset !important;"><strong>Посмотреть риски</strong></button>
       <br><br>
+
       {% include "pagination.html" %}
+
+
+      {% for employee in page_obj %}
+      <script>
+            function pagination_button(event, index){
+                var num_ = index;
+                var div_num = document.querySelectorAll(".num");
+
+                var current = sessionStorage.getItem(index);
+                if (!current) {
+                  save_data_to_localstorage(index);
+                }
+
+                console.log(div_num);
+                for (var i = 0; i < div_num.length; i++) {
+                    var t = i + 1;
+                    var element = document.getElementById("numbers_" + t);
+                    if (!sessionStorage.getItem(t)){
+                        element.style = "border-radius: 40px; padding: 5px 10px; color:#800000;margin-right: 25px;border: 2.5px solid #E86B52;font-size: 20px;";
+                      }
+                      else{
+                        element.style = "border-radius: 40px; padding: 5px 10px; color:#800000;margin-right: 25px;border: 2.5px solid #1515EA;font-size: 20px;";
+                      }
+
+
+                    if (i != num_) {
+                      div_num[i].style.display = "none";
+                    }
+                    else{
+                      sessionStorage.setItem('now', t);
+                      var element = document.getElementById("numbers_" + t);
+                      element.style.backgroundColor = "#E6E2E2";
+                      div_num[i].style.display = "block";
+                    }
+                }
+            }
+
+            var div = document.getElementById('d-q-ans-container_{{forloop.counter}}');
+            var p1 = document.getElementById('t_ans_35636_{{forloop.counter}}');
+            var p2 = document.getElementById('t_ans_35637_{{forloop.counter}}');
+            var p3 = document.getElementById('t_ans_35638_{{forloop.counter}}');
+
+
+            sessionStorage.clear();
+<!--            update_data_in_localstorage()-->
+<!--            save_data_to_localstorage();-->
+            p1.onclick = function(event) {
+                document.getElementById('d-q-ans-container_{{forloop.counter}}').setAttribute('data-last-value', p1.value);
+                update_data_in_localstorage({{forloop.counter}});
+                pagination_button(event, {{forloop.counter}});
+                check();
+                if(document.getElementById('d-q-ans-container_{{forloop.counter}}').getAttribute("sub_id") != 0){
+                    let idd = document.getElementById('d-q-ans-container_{{forloop.counter}}').getAttribute("sub_id");
+                    if(document.getElementById('d-q-ans-container_' + idd) != null){
+                        document.getElementById('d-q-ans-container_' + idd).removeAttribute("style");
+                    }
+                }
+              };
+
+            p2.onclick = function(e) {
+                document.getElementById('d-q-ans-container_{{forloop.counter}}').setAttribute('data-last-value', p2.value);
+                update_data_in_localstorage({{forloop.counter}});
+                pagination_button(event, {{forloop.counter}});
+                check();
+                if(document.getElementById('d-q-ans-container_{{forloop.counter}}').getAttribute("sub_id") != 0){
+                    let idd = document.getElementById('d-q-ans-container_{{forloop.counter}}').getAttribute("sub_id");
+                    if(document.getElementById('d-q-ans-container_' + idd) != null){
+                        document.getElementById('d-q-ans-container_' + idd).removeAttribute("style");
+                    }
+                }
+              };
+
+            p3.onclick = function(e) {
+              document.getElementById('d-q-ans-container_{{forloop.counter}}').setAttribute('data-last-value', p3.value);
+              save_data_to_localstorage({{forloop.counter}});
+              pagination_button(event, {{forloop.counter}});
+              check();
+              if(document.getElementById('d-q-ans-container_{{forloop.counter}}').getAttribute("sub_id") != 0){
+                    let idd = document.getElementById('d-q-ans-container_{{forloop.counter}}').getAttribute("sub_id");
+                    if(document.getElementById('d-q-ans-container_' + idd) != null){
+                        document.getElementById('d-q-ans-container_' + idd).removeAttribute("style");
+                    }
+                }
+            };
+        </script>
+      {% endfor %}
+
   </div>
 </div>
 <br><br>

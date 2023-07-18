@@ -1,6 +1,6 @@
 function check() {
     let span = document.getElementById("risks");
-    if (sessionStorage.getItem("risks") === null || JSON.parse(sessionStorage.getItem("risks")).length == 0) {
+    if (sessionStorage.getItem("risks") === null || JSON.parse(sessionStorage.getItem("risks")).length == 0 || document.getElementById('d-q-ans-container_0').style.display != "none") {
         document.getElementById("risk-count").style.display = "none";
     } else {
         document.getElementById("risk-count").style.display = "block";

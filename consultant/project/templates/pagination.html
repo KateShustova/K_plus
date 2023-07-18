@@ -17,7 +17,7 @@
 
 
 <div class="paginator" align="center" style="width:70%;margin:0 auto;">
-   {% for employee in page_obj %}
+   {% for employee in page_obj_legal %}
    <button id="numbers_{{forloop.counter}}" class="button-button" style="border-radius: 40px; border: 2.5px solid #E86B52; height:50px; width:50px; color:#800000;margin-right: 25px; font-size: 25px;">{{forloop.counter}}</button>
    {% endfor %}
    {% load static %}
@@ -26,8 +26,10 @@
    <script src="{% static 'js_code/pagination_switch.js' %}"> </script>
    <script src="{% static 'js_code/pagination_init.js' %}"> </script>
    <script>
-      pagination_init(21, 1); // инициализируем кнопки переключения вопросов
-      pagination_switch(21); // событие переключения вопроса
+      if (document.getElementById('d-q-ans-container_0').style.display == 'none'){
+         pagination_init(4, 1); // инициализируем кнопки переключения вопросов
+         pagination_switch(4); // событие переключения вопроса
+      }
    </script>
    <br><br>
 </div>

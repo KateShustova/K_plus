@@ -14,8 +14,8 @@ function save_data_to_localstorage(number) {
     console.log(sessionStorage);
 }
 
-function update_data_in_localstorage(id) {
-    sessionStorage.setItem(id, 1);
+function update_data_in_localstorage(id, value) {
+    sessionStorage.setItem(id, value);
     var current = sessionStorage.getItem('risks');
     if (!current) {
         current = [];

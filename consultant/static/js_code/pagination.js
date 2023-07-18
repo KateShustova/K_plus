@@ -2,7 +2,6 @@ function update(num_, div_num) {
     var element;
     var set = new Set(JSON.parse(sessionStorage.getItem("risks")));
     for (var i = 1; i <= div_num.length; i++) {
-        console.log(i);
         element = document.getElementById("numbers_" + i);
         if (!sessionStorage.getItem(i)) {
             if (set.has(i)) {
@@ -58,7 +57,6 @@ function pagination(event) {
     if (!sessionStorage.getItem(current)) {
         save_data_to_localstorage(current);
     }
-
 
     update(num_, div_num);
 };

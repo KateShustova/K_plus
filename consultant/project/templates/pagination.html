@@ -1,0 +1,33 @@
+<!--<div>-->
+<!--  <span>-->
+<!--    {% if page_obj.has_previous %}-->
+<!--      <a href="?page={{ page_obj.previous_page_number }}#qcont">Previous</a>-->
+<!--      <script>-->
+<!--        $("body").niceScroll();-->
+<!--      </script>-->
+<!--    {% endif %}-->
+<!--    <span>-->
+<!--      Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.-->
+<!--    </span>-->
+<!--    {% if page_obj.has_next %}-->
+<!--      <a id="btn2" href="?page={{ page_obj.next_page_number }}#qcont">Next</a>-->
+<!--    {% endif %}-->
+<!--  </span>-->
+<!--</div>-->
+
+
+<div class="paginator" align="center" style="width:70%;margin:0 auto;">
+   {% for employee in page_obj %}
+   <button id="numbers_{{forloop.counter}}" class="button-button" style="border-radius: 40px; border: 2.5px solid #E86B52; height:50px; width:50px; color:#800000;margin-right: 25px; font-size: 25px;">{{forloop.counter}}</button>
+   {% endfor %}
+   {% load static %}
+   <script src="{% static 'js_code/edit_storage.js' %}"> </script>
+   <script src="{% static 'js_code/pagination.js' %}"> </script>
+   <script src="{% static 'js_code/pagination_switch.js' %}"> </script>
+   <script src="{% static 'js_code/pagination_init.js' %}"> </script>
+   <script>
+      pagination_init(21, 1); // инициализируем кнопки переключения вопросов
+      pagination_switch(21); // событие переключения вопроса
+   </script>
+   <br><br>
+</div>

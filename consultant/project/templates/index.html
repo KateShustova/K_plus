@@ -53,26 +53,34 @@
             </div>
          </div>
       </div>
-      <div class="ref-info">
-         <h1 class="text-center" id="documents_page" style="padding-top: 80px; margin-top: -10px; margin-bottom: 80px; width: 950px; margin:0 auto;"><strong>Перед тем, как вы сможете рассчитать свои риски, вам нужно собрать
+
+      <div class="container" width="100%">
+         <h1 class="text-center" id="documents_page" style="padding-top: 80px; margin-top: -10px; margin-bottom: 80px; width: 80%; margin:0 auto;"><strong>Перед тем, как вы сможете рассчитать свои риски, вам нужно собрать
             необходимую информацию:</strong>
          </h1>
-         <div class="cont-ref" style="float:left;">
-            <div id="cont-ref-head" style="border-radius: 80px; padding-top: 35px; width: 850px; margin:0 auto; background-color:#FFFFFF;color:#800000;text-align: center;">
-               <br><br>
-               <h1>ТЕЕЕЕЕКСТ</h1>
+         <br>
+         <div class="cont-ref d-flex">
+            <div class="container">
+                   
+               {% for doc in docs %}
+                  <div style="border-radius: 40px; padding-top:10px;width: 60%; background-color:#FFFFFF;font-size:12px;text-align: center;">
+                     <span style="font-size: 160%; padding-left:10px;padding-right:10px"><strong>{{ doc.content |safe }}</strong></span>
+                  </div>
+                  <br>
+               {% endfor %} 
+         
             </div>
          </div>
       </div>
-      <br><br>
+      
       <div class="container">
-         <h1 class="text-center" id="test_page" style="padding-top: 120px; margin-top: -80px; margin-bottom: 80px; width: 950px; margin:0 auto;"><strong>Чтобы мы могли проанализировать риски при покупке дома, ответьте на вопросы</strong></h1>
+         <h1 class="text-center" id="test_page" style="padding-top: 100px; margin-top: -80px; margin-bottom: 80px; width: 80%; margin:0 auto;"><strong>Чтобы мы могли проанализировать риски при покупке дома, ответьте на вопросы</strong></h1>
          <br><br>
          <div class="qcontainer " id="qcont">
             {% for employee in page_obj %}
-            <div id="d-q-ans-container_{{forloop.counter}}" class="num" style="border-radius: 80px; padding-top: 35px; width: 850px; margin:0 auto; background-color:#FFFFFF;color:#800000;text-align: center;">
+            <div id="d-q-ans-container_{{forloop.counter}}" class="num" style="border-radius: 60px; padding-top: 35px; width: 850px; margin:0 auto; background-color:#FFFFFF;color:#800000;text-align: center;">
                <img align="right" id="spr-info" src="{% static 'img\question.png' %}">
-               <h1 class="qtext_{{forloop.counter}}" id="mydiv" style="margin-bottom: 45px; color: #008000;" ><strong>Вопрос № {{forloop.counter}}</strong></h1>
+               <h1 class="qtext_{{forloop.counter}}" id="mydiv" style="margin-bottom: 30px; color: #008000;" ><strong>Вопрос № {{forloop.counter}}</strong></h1>
                <span style="font-size: 160%; padding-left:10px;padding-right:10px" class="qtext_{{forloop.counter}}" ><strong>{{ employee.content }}</strong></span>
                <div>
                   <br><br>

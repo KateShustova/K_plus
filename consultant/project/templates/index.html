@@ -6,12 +6,12 @@
       <title>Терем-ОК</title>
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
       <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.css" rel="stylesheet"/>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
    </head>
 
-   <body style="background:#f6f7f8">
-
-      <!-- Шапка -->
-
+   <body style="background:#f6f7f8; font-family:'Roboto'">
       <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
          <div class="container-fluid">
             <a class="navbar-brand" href="#main_page">
@@ -61,25 +61,47 @@
          </div>
       </div>
 
-      <!-- Страница справки -->
+      <style>
+         .download {
+            border-radius: 20px;
+            padding: 8px;
+            height:60px;
+            background-color:#84b45c;
+            color:#464140;
+            font-size: 24px;
+         }
+         .download:hover {
+            background-color:#F0F0F0;
+            color:#464140;
+            text-decoration: none;
+         }
+      </style>
 
-      <div class="container" width="100%">
-         <h1 class="text-center" id="documents_page" style="padding-top: 80px; margin-top: -10px; margin-bottom: 80px; width: 80%; margin:0 auto;"><strong>Перед тем, как вы сможете рассчитать свои риски, вам нужно собрать
-            необходимую информацию:</strong>
-         </h1>
-         <br>
-         <div class="cont-ref d-flex">
-            <div class="container">
-               
-               <!-- Перечень документов -->
+      <h1 class="text-center" id="documents_page" style="padding-top: 80px; margin-top: -10px; margin-bottom: 80px; width: 80%; margin:0 auto;"><strong>Перед рассчётом рисков, вам нужно собрать необходимую информацию:</strong>
+      </h1>
+      <br>
+      <div class="bg-image position-relative">
+         <img src="{% static 'img\background_docs.jpg' %}" width="100%" >
+         <div class="mask position-absolute top-0 end-0 bottom-0 start-0 " style="background-color: rgba(0, 0, 0, 0.5)">
+            <br>
+            <div class="cont-ref d-flex justify-content-center" width="100%">
+               <div class="container" style="padding-top:20px">
 
-               {% for doc in docs %}
-                  <div style="border-radius: 40px; padding-top:10px;width: 60%; background-color:#FFFFFF;font-size:12px;text-align: center;">
-                     <span style="font-size: 160%; padding-left:10px;padding-right:10px"><strong>{{ doc.content |safe }}</strong></span>
-                  </div>
-                  <br>
-               {% endfor %}
+                  {% for doc in docs %}
+                     <div style="border-radius: 30px; padding:10px;width:90%; background-color:#FFFFFF;font-size:12px;text-align: center;">
+                        <span style="font-size: 160%; padding-left:10px;padding-right:10px">{{ doc.content |safe }}</span>
+                     </div>
+                     <br>
+                  {% endfor %}
 
+               </div> 
+               <div class="d-flex justify-content-center align-items-start" style="padding-top:60px">
+                  <p>
+                     <a href="{% static 'doc_list.pdf' %}" target="blank" rel="noopener noreferrer"><img src="{% static 'img/documents.png' %}" style="margin-left:44px"width="40%" alt="Пока не работает"></a>
+                     <br>
+                     <a href="{% static 'doc_list.pdf' %}" target="blank" rel="noopener noreferrer" class="download" download>Скачать документы</a>
+                  </p>
+               </div>
             </div>
          </div>
       </div>
@@ -106,14 +128,13 @@
       <!-- Блок с тектом и номером вопроса теста для физиков -->
 
       <script id="withIframe" type="text/template">
-        {% for employee in page_obj_phys %}  <!-- employee = question page -->
-            <div id="d-q-ans-container_{{forloop.counter}}" class="num" style="border-radius: 60px; padding-top: 35px; width: 850px; margin:0 auto; background-color:#FFFFFF;color:#800000;text-align: center;">
+               <!-- Кнопки теста для вопросов физиков -->
+               
+        {% for employee in page_obj_phys %}
+            <div id="d-q-ans-container_{{forloop.counter}}" class="num" style="border-radius: 60px; padding-top: 35px; width: 850px; margin:0 auto; background-color:#FFFFFF;text-align: center;">
                <img align="right" id="spr-info" src="{% static 'img\question.png' %}">
                <h1 class="qtext_{{forloop.counter}}" id="mydiv" style="margin-bottom: 30px; color: #008000;" ><strong>Вопрос № {{forloop.counter}}</strong></h1>
-               <span style="font-size: 160%; padding-left:10px;padding-right:10px" class="qtext_{{forloop.counter}}" ><strong>{{ employee.content }}</strong></span>
-
-               <!-- Кнопки теста для вопросов физиков -->
-
+               <span style="font-size: 200%; padding-left:10px;padding-right:10px" class="qtext_{{forloop.counter}}" >{{ employee.content }}</span>
                <div>
                   <br><br>
                   <div class="rb-chk-container otp-row_{{forloop.counter}}" style="text-align: center;">
@@ -143,12 +164,11 @@
 
       <script id="withIframe_l" type="text/template">
         {% for employee in page_obj_legal %}
-            <div id="d-q-ans-container_{{forloop.counter}}" class="num" style="border-radius: 60px; padding-top: 35px; width: 850px; margin:0 auto; background-color:#FFFFFF;color:#800000;text-align: center;">
+            <div id="d-q-ans-container_{{forloop.counter}}" class="num" style="border-radius: 60px; padding-top: 35px; width: 850px; margin:0 auto; background-color:#FFFFFF;text-align: center;">
                <img align="right" id="spr-info" src="{% static 'img\question.png' %}">
                <h1 class="qtext_{{forloop.counter}}" id="mydiv" style="margin-bottom: 30px; color: #008000;" ><strong>Вопрос № {{forloop.counter}}</strong></h1>
-               <span style="font-size: 160%; padding-left:10px;padding-right:10px" class="qtext_{{forloop.counter}}" ><strong>{{ employee.content }}</strong></span>
-
-               <div> <!-- Кнопки теста для вопросов юриков -->
+               <span style="font-size: 200%; padding-left:10px;padding-right:10px" class="qtext_{{forloop.counter}}" >{{ employee.content }}</span>
+               <div>
                   <br><br>
                   <div class="rb-chk-container otp-row_{{forloop.counter}}" style="text-align: center;">
                      <label class="otp-input s-view-input otp-radiobutton_{{forloop.counter}}" style="margin-right: 45px;">
@@ -179,9 +199,9 @@
          <h1 class="text-center" id="test_page" style="padding-top: 100px; margin-top: -80px; margin-bottom: 80px; width: 80%; margin:0 auto;"><strong>Чтобы мы могли проанализировать риски при покупке дома, ответьте на вопросы</strong></h1>
          <br><br>
          <div class="qcontainer " id="qcont" width="100%">
-            <div id="d-q-ans-container_0" class="num" style="border-radius: 60px; padding-top: 35px; width: 850px; margin:0 auto; background-color:#FFFFFF;color:#800000;text-align: center;">
+            <div id="d-q-ans-container_0" class="num" style="border-radius: 60px; padding-top: 35px; width: 850px; margin:0 auto; background-color:#FFFFFF;text-align: center;">
                <img align="right" id="spr-info-0" src="{% static 'img\question.png' %}">
-               <h2 style="margin-bottom: 30px;" class="qtext_0" ><strong>Продавец является физическим или юридическим лицом?</strong></h2>
+               <h2 style="font-size=100%; margin-bottom: 30px;" class="qtext_0" >Продавец является физическим или юридическим лицом?</h2>
                <div>
                   <br><br>
                   <div class="rb-chk-container otp-row_0" style="text-align: center;">
@@ -201,12 +221,11 @@
             </div>
          </div>
 
+
             <!-- Счетчик рисков -->
 
-            <div id="risk-count" class = "risks" style="border-radius: 60px; padding-top: 8px; padding-bottom: 12px; width: 600px; margin:0 auto; background-color:#E3E0E0;color:#800000; border-top-left-radius: 0;border-top-right-radius: 0;text-align: center;">
-               <span style="font-size: 180%; padding-left:10px;padding-right:10px;" id="risks" >
-                  <strong> </strong>
-               </span>
+            <div id="risk-count" class = "risks" style="border-radius: 60px; padding-top: 8px; padding-bottom: 12px; width: 600px; margin:0 auto; background-color:#E3E0E0; border-top-left-radius: 0;border-top-right-radius: 0;text-align: center;">
+               <span style="font-size: 180%; padding-left:10px;padding-right:10px;" id="risks" ><strong> </strong></span>
                {% load static %}
                <script src="{% static 'js_code/check.js' %}"></script> 
 

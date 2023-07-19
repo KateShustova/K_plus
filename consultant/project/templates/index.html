@@ -228,11 +228,14 @@
                <script src="{% static 'js_code/pagination_switch.js' %}"> </script>
                <script src="{% static 'js_code/pagination_init.js' %}"> </script>
                <script src="{% static 'js_code/button_click.js' %}"> </script>
+               <script src="{% static 'js_code/update_user_type.js' %}"> </script>
 
             <script>
                var p1 = document.getElementById('t_ans_35636_0');
                var p2 = document.getElementById('t_ans_35637_0');
                p1.onclick = function(event) {
+                     update_user_type("phys");
+                     sessionStorage.setItem("user_type", "phys");
                     document.getElementById('d-q-ans-container_0').style.display = 'none';
                     document.getElementById('btn_back').style = "margin-left: 50px;";
                     document.getElementById("qcont").innerHTML = document.getElementById("withIframe").innerHTML;
@@ -246,6 +249,7 @@
                 };
 
                 p2.onclick = function(event) {
+                     update_user_type("legal");
                     document.getElementById('d-q-ans-container_0').style.display = 'none';
                     document.getElementById('btn_back').style = "margin-left: 50px;";
                     document.getElementById("qcont").innerHTML = document.getElementById("withIframe_l").innerHTML;

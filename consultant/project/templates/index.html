@@ -30,6 +30,9 @@
             </div>
          </div>
       </nav>
+
+      <!-- Список-описание на главной странице -->
+
       <style>
          .triangles {
          list-style-type: "⊲ ";
@@ -103,6 +106,7 @@
          </div>
       </div>
 
+      <!-- Стиль кнопок в тесте -->
 
       <style> 
          .answer {
@@ -121,7 +125,11 @@
          }
       </style>
 
+      <!-- Блок с тектом и номером вопроса теста для физиков -->
+
       <script id="withIframe" type="text/template">
+               <!-- Кнопки теста для вопросов физиков -->
+               
         {% for employee in page_obj_phys %}
             <div id="d-q-ans-container_{{forloop.counter}}" class="num" style="border-radius: 60px; padding-top: 35px; width: 850px; margin:0 auto; background-color:#FFFFFF;text-align: center;">
                <img align="right" id="spr-info" src="{% static 'img\question.png' %}">
@@ -151,6 +159,8 @@
             </div>
             {% endfor %}
       </script>
+
+      <!-- Блок с тектом и номером вопроса теста для юриков -->
 
       <script id="withIframe_l" type="text/template">
         {% for employee in page_obj_legal %}
@@ -183,8 +193,9 @@
             {% endfor %}
       </script>
 
+      
 
-      <div class="container">
+      <div class="container"> <!-- Блок с первым вопросом (юр/физ) -->    
          <h1 class="text-center" id="test_page" style="padding-top: 100px; margin-top: -80px; margin-bottom: 80px; width: 80%; margin:0 auto;"><strong>Чтобы мы могли проанализировать риски при покупке дома, ответьте на вопросы</strong></h1>
          <br><br>
          <div class="qcontainer " id="qcont" width="100%">
@@ -210,14 +221,20 @@
             </div>
          </div>
 
+
+            <!-- Счетчик рисков -->
+
             <div id="risk-count" class = "risks" style="border-radius: 60px; padding-top: 8px; padding-bottom: 12px; width: 600px; margin:0 auto; background-color:#E3E0E0; border-top-left-radius: 0;border-top-right-radius: 0;text-align: center;">
                <span style="font-size: 180%; padding-left:10px;padding-right:10px;" id="risks" ><strong> </strong></span>
                {% load static %}
-               <script src="{% static 'js_code/check.js' %}"> </script>
+               <script src="{% static 'js_code/check.js' %}"></script> 
+
+               <!-- Логика счетчика рисков -->
                <script>
-                  check();
+                  check(); 
                </script>
-            </div>
+
+            </div> <!-- Какой-то непонятный стиль -->
             <br /><br class="height1" />
             <style>
                br.height1 {
@@ -225,85 +242,99 @@
                display: block;
                }
             </style>
-
-         <div style="text-align: center;">
+         
+           
+         
+         <div style="text-align: center;"><!-- Ряд кнопок  -->    
             <label>
-            <button onclick="window.location.href='/risks';" type="button" class="btn btn-lg btn-block btn-primary" style="border: 1.8px solid #000000;border-radius: 40px; padding-top: 7px; width: 170px; height: 75px; margin:0 auto; background-color:#f6f7f8;color:#800000;text-align: center;font-size: 21px;text-transform: unset !important;display: inline-block;"><strong>Посмотреть риски</strong></button>
-               </label>
+               <!-- Кнопка "Посмотреть риски" в тесте -->
+               <button onclick="window.location.href='/risks';" type="button" class="btn btn-lg btn-block btn-primary" style="border: 1.8px solid #000000;border-radius: 40px; padding-top: 7px; width: 170px; height: 75px; margin:0 auto; background-color:#f6f7f8;color:#800000;text-align: center;font-size: 21px;text-transform: unset !important;display: inline-block;">
+                  <strong>Посмотреть риски</strong></button>
+            </label>
 
             <label style="margin-left: 50px;display: none;" id="btn_back">
-            <button onClick="window.location.reload();" type="button" class="btn btn-lg btn-block btn-primary" style="border: 1.8px solid #000000;border-radius: 40px; padding-top: 7px; width: 170px; height: 75px; margin:0 auto; background-color:#f6f7f8;color:#800000;text-align: center;font-size: 21px;text-transform: unset !important;display: inline-block;"><strong>Назад</strong></button>
-               </label>
-
+               <!-- Кнопка "Пройти заново" в тесте -->
+               <button onClick="window.location.reload();" type="button" class="btn btn-lg btn-block btn-primary" style="border: 1.8px solid #000000;border-radius: 40px; padding-top: 7px; width: 170px; height: 75px; margin:0 auto; background-color:#f6f7f8;color:#800000;text-align: center;font-size: 21px;text-transform: unset !important;display: inline-block;">
+                  <strong>Пройти заново</strong></button>
+            </label>
          </div>
-            <br><br>
+            
+         <br><br>
 
-            <div class="paginator" align="center" id="pag_id" style="width:70%;margin:0 auto;"></div>
+         <!-- Отображение цифр в кружках-->
+         <div class="paginator" align="center" id="pag_id" style="width:70%;margin:0 auto;"></div>
 
+            <!-- Отображение цифр в кружках на вопросах физиков-->
             <script id="withIframe-1" type="text/template">
-              {% for employee in page_obj_phys %}
-               <button id="numbers_{{forloop.counter}}" class="button-button" style="border-radius: 40px; border: 2.5px solid #E86B52; height:50px; width:50px; color:#800000;margin-right: 25px; font-size: 25px;">{{forloop.counter}}</button>
+               {% for employee in page_obj_phys %}
+                  <button id="numbers_{{forloop.counter}}" class="button-button" style="border-radius: 40px; border: 2.5px solid #E86B52; height:50px; width:50px; color:#800000;margin-right: 25px; font-size: 25px;">
+                     {{forloop.counter}}
+                  </button>
                {% endfor %}
                <br><br>
             </script>
 
+            <!-- Отображение цифр в кружках на вопросах юриков-->
             <script id="withIframe_l-1" type="text/template">
-              {% for employee in page_obj_legal %}
-               <button id="numbers_{{forloop.counter}}" class="button-button" style="border-radius: 40px; border: 2.5px solid #E86B52; height:50px; width:50px; color:#800000;margin-right: 25px; font-size: 25px;">{{forloop.counter}}</button>
+               {% for employee in page_obj_legal %}
+                  <button id="numbers_{{forloop.counter}}" class="button-button" style="border-radius: 40px; border: 2.5px solid #E86B52; height:50px; width:50px; color:#800000;margin-right: 25px; font-size: 25px;">
+                     {{forloop.counter}}
+                  </button>
                {% endfor %}
                <br><br>
             </script>
-
+            
+            <!-- Обработчик клика на кнопки теста-->
             <script>
-                  function foo(id){
-                     var div = document.getElementById('d-q-ans-container_' + id);
-                     var p1 = document.getElementById('t_ans_35636_' + id);
-                     var p2 = document.getElementById('t_ans_35637_' + id);
-                     var p3 = document.getElementById('t_ans_35638_' + id);
-
-
-<!--                     sessionStorage.clear();-->
-                     btn_click_mark(p1, id, 1);
-                     btn_click_mark(p2, id, 0);
-                     btn_click(p3, id);
-                  }
+               function foo(id){
+                  var div = document.getElementById('d-q-ans-container_' + id);
+                  var button_yes = document.getElementById('t_ans_35636_' + id);
+                  var button_no = document.getElementById('t_ans_35637_' + id);
+                  var button_skip = document.getElementById('t_ans_35638_' + id);
+                  // sessionStorage.clear()
+                  btn_click_mark(button_yes, id, 1);
+                  btn_click_mark(button_no, id, 0);
+                  btn_click(button_skip, id);
+               }
             </script>
 
-
+            <!--Загрузка скриптов-->
             {% load static %}
-               <script src="{% static 'js_code/edit_storage.js' %}"> </script>
-               <script src="{% static 'js_code/pagination.js' %}"> </script>
-               <script src="{% static 'js_code/pagination_switch.js' %}"> </script>
-               <script src="{% static 'js_code/pagination_init.js' %}"> </script>
-               <script src="{% static 'js_code/button_click.js' %}"> </script>
-               <script src="{% static 'js_code/update_user_type.js' %}"> </script>
+            <script src="{% static 'js_code/edit_storage.js' %}"> </script>
+            <script src="{% static 'js_code/pagination.js' %}"> </script>
+            <script src="{% static 'js_code/pagination_switch.js' %}"> </script>
+            <script src="{% static 'js_code/pagination_init.js' %}"> </script>
+            <script src="{% static 'js_code/button_click.js' %}"> </script>
+            <script src="{% static 'js_code/update_user_type.js' %}"> </script>
 
+            <!-- Обработчик клика на кнопки вопроса юр/физ-->
             <script>
-               var p1 = document.getElementById('t_ans_35636_0');
-               var p2 = document.getElementById('t_ans_35637_0');
-               p1.onclick = function(event) {
-                     update_user_type("phys");
-                     sessionStorage.setItem("user_type", "phys");
-                    document.getElementById('d-q-ans-container_0').style.display = 'none';
-                    document.getElementById('btn_back').style = "margin-left: 50px;";
-                    document.getElementById("qcont").innerHTML = document.getElementById("withIframe").innerHTML;
-                    document.getElementById("pag_id").innerHTML = document.getElementById("withIframe-1").innerHTML;
-                    pagination_init(4, 1); // инициализируем кнопки переключения вопросов
-                    pagination_switch(4); // событие переключения вопроса
+               var button_phys = document.getElementById('t_ans_35636_0');
+               var button_legal = document.getElementById('t_ans_35637_0');
+
+               button_phys.onclick = function(event){
+                  update_user_type("phys");
+                  sessionStorage.setItem("user_type", "phys");
+                  document.getElementById('d-q-ans-container_0').style.display = 'none';
+                  document.getElementById('btn_back').style = "margin-left: 50px;";
+                  document.getElementById("qcont").innerHTML = document.getElementById("withIframe").innerHTML;
+                  document.getElementById("pag_id").innerHTML = document.getElementById("withIframe-1").innerHTML;
+                  pagination_init(21, 1); // инициализируем кнопки переключения вопросов
+                  pagination_switch(21); // событие переключения вопроса
 
                     {% for employee in page_obj_legal %}
                         foo({{forloop.counter}});
                     {% endfor %}
-                };
+                  };
 
-                p2.onclick = function(event) {
+               button_legal.onclick = function(event) {
                      update_user_type("legal");
                     document.getElementById('d-q-ans-container_0').style.display = 'none';
                     document.getElementById('btn_back').style = "margin-left: 50px;";
                     document.getElementById("qcont").innerHTML = document.getElementById("withIframe_l").innerHTML;
                     document.getElementById("pag_id").innerHTML = document.getElementById("withIframe_l-1").innerHTML;
-                    pagination_init(21, 1); // инициализируем кнопки переключения вопросов
-                    pagination_switch(21); // событие переключения вопроса
+                    pagination_init(18, 1); // инициализируем кнопки переключения вопросов
+                    pagination_switch(18); // событие переключения вопроса
 
                     {% for employee in page_obj_legal %}
                         foo({{forloop.counter}});
@@ -323,7 +354,7 @@
       </div>
       <br><br>
       <div class="risk-info">
-         <h1 class="text-center" id="risk-page" style="margin-bottom: 80px; width: 950px;margin:0 auto;"><strong>Чтобы мы могли проанализировать риски при покупке дома, ответьте на вопросы</strong></h1>
+         <h1 class="text-center" id="risk-page" style="margin-bottom: 80px; width: 950px;margin:0 auto;"><strong>Риски при покупке индивидуального жилого дома в вашем случае</strong></h1>
       </div>
    </body>
 </html>

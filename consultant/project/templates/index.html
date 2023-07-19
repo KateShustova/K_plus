@@ -7,6 +7,7 @@
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
       <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.css" rel="stylesheet"/>
    </head>
+
    <body style="background:#f6f7f8">
       <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
          <div class="container-fluid">
@@ -73,6 +74,23 @@
          </div>
       </div>
 
+      <style> 
+         .answer {
+            border-radius: 40px;
+            border: none;
+            height:60px;
+            background-color:#464140;
+            color:#FFFFFF;
+            font-size: 22px;
+         }
+         .answer:hover {
+            background-color:#808080;
+         }
+         .answer:active {
+            background-color:#008000;
+         }
+      </style>
+
       <script id="withIframe" type="text/template">
         {% for employee in page_obj_phys %}
             <div id="d-q-ans-container_{{forloop.counter}}" class="num" style="border-radius: 60px; padding-top: 35px; width: 850px; margin:0 auto; background-color:#FFFFFF;color:#800000;text-align: center;">
@@ -84,17 +102,17 @@
                   <div class="rb-chk-container otp-row_{{forloop.counter}}" style="text-align: center;">
                      <label class="otp-input s-view-input otp-radiobutton_{{forloop.counter}}" style="margin-right: 45px;">
                      <a id="t_ans_35636_{{forloop.counter}}">
-                     <button type="button" value=1 style="border-radius: 40px; border: none; height:60px;width:115px;background-color:#464140;color:#FFFFFF;font-size: 22px;">Да</button>
+                     <button class="answer" type="button" value=1 style="width:115px">Да</button>
                      </a>
                      </label>
                      <label class="otp-input s-view-input otp-radiobutton_{{forloop.counter}}" style="margin-right: 45px;">
                      <a id="t_ans_35637_{{forloop.counter}}">
-                     <button type="button" value=1 style="border-radius: 40px; border: none;height:60px;width:115px; background-color:#464140;color:#FFFFFF;font-size: 22px;">Нет</button>
+                     <button class="answer" type="button" value=1 style="width:115px">Нет</button>
                      </a>
                      </label>
                      <label class="otp-input s-view-input otp-radiobutton_{{forloop.counter}}" style="margin-right: 45px;">
                      <a id="t_ans_35638_{{forloop.counter}}">
-                     <button type="button" value=1 style="border-radius: 40px; border: none; height:60px;width:115px; background-color:#464140;color:#FFFFFF;font-size: 22px;">Пропуск</button>
+                     <button class="answer" type="button" value=1 style="width:115px">Пропуск</button>
                      </a>
                      </label>
                   </div>
@@ -115,17 +133,17 @@
                   <div class="rb-chk-container otp-row_{{forloop.counter}}" style="text-align: center;">
                      <label class="otp-input s-view-input otp-radiobutton_{{forloop.counter}}" style="margin-right: 45px;">
                      <a id="t_ans_35636_{{forloop.counter}}">
-                     <button type="button" value=1 style="border-radius: 40px; border: none; height:60px;width:115px;background-color:#464140;color:#FFFFFF;font-size: 22px;">Да</button>
+                     <button class="answer" type="button" value=1 style="width:115px">Да</button>
                      </a>
                      </label>
                      <label class="otp-input s-view-input otp-radiobutton_{{forloop.counter}}" style="margin-right: 45px;">
                      <a id="t_ans_35637_{{forloop.counter}}">
-                     <button type="button" value=1 style="border-radius: 40px; border: none;height:60px;width:115px; background-color:#464140;color:#FFFFFF;font-size: 22px;">Нет</button>
+                     <button class="answer" type="button" value=1 style="width:115px">Нет</button>
                      </a>
                      </label>
                      <label class="otp-input s-view-input otp-radiobutton_{{forloop.counter}}" style="margin-right: 45px;">
                      <a id="t_ans_35638_{{forloop.counter}}">
-                     <button type="button" value=1 style="border-radius: 40px; border: none; height:60px;width:115px; background-color:#464140;color:#FFFFFF;font-size: 22px;">Пропуск</button>
+                     <button class="answer" type="button" value=1 style="width:115px">Пропуск</button>
                      </a>
                      </label>
                   </div>
@@ -139,21 +157,21 @@
       <div class="container">
          <h1 class="text-center" id="test_page" style="padding-top: 100px; margin-top: -80px; margin-bottom: 80px; width: 80%; margin:0 auto;"><strong>Чтобы мы могли проанализировать риски при покупке дома, ответьте на вопросы</strong></h1>
          <br><br>
-         <div class="qcontainer " id="qcont">
+         <div class="qcontainer " id="qcont" width="100%">
             <div id="d-q-ans-container_0" class="num" style="border-radius: 60px; padding-top: 35px; width: 850px; margin:0 auto; background-color:#FFFFFF;color:#800000;text-align: center;">
                <img align="right" id="spr-info-0" src="{% static 'img\question.png' %}">
-               <h2 style="margin-bottom: 30px;" class="qtext_0" ><strong>Вы являетесь физическим или юридическим лицом?</strong></h2>
+               <h2 style="margin-bottom: 30px;" class="qtext_0" ><strong>Продавец является физическим или юридическим лицом?</strong></h2>
                <div>
                   <br><br>
                   <div class="rb-chk-container otp-row_0" style="text-align: center;">
                      <label class="otp-input s-view-input otp-radiobutton_0" style="margin-right: 80px;">
                      <a id="t_ans_35636_0">
-                     <button type="button" value=1 style="border-radius: 40px; border: none; height:80px;width:200px;background-color:#464140;color:#FFFFFF;font-size: 28px;">Физическим</button>
+                     <button class="answer" type="button" value=1 style="width:200px;">Физическим</button>
                      </a>
                      </label>
                      <label class="otp-input s-view-input otp-radiobutton_0" style="margin-right: 45px;">
                      <a id="t_ans_35637_0">
-                     <button type="button" value=1 style="border-radius: 40px; border: none;height:80px;width:200px; background-color:#464140;color:#FFFFFF;font-size: 28px;">Юридическим</button>
+                     <button class="answer" type="button" value=1 style="width:200px;">Юридическим</button>
                      </a>
                      </label>
                   </div>

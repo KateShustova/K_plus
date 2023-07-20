@@ -17,7 +17,7 @@
 
 
 <div class="paginator" align="center" style="width:70%;margin:0 auto;">
-   {% for employee in page_obj_legal %}
+   {% for employee in page_obj %}
    <button id="numbers_{{forloop.counter}}" class="button-button" style="border-radius: 40px; border: 2.5px solid #E86B52; height:50px; width:50px; color:#800000;margin-right: 25px; font-size: 25px;">{{forloop.counter}}</button>
    {% endfor %}
    {% load static %}

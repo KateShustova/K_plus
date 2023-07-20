@@ -1,4 +1,4 @@
-function update(num_, div_num) {
+function update(num_, div_num, value) {
     var element;
     var set = new Set(JSON.parse(sessionStorage.getItem("risks")));
     for (var i = 1; i <= div_num.length; i++) {
@@ -22,6 +22,8 @@ function update(num_, div_num) {
             div_num[i - 1].style.display = "block";
         }
     }
+    var t = num_ + 1;
+    check_correct_answer();
 }
 //#1515ea - blue
 //#01010a - black
@@ -64,3 +66,4 @@ function pagination(event) {
 
     update(num_, div_num);
 };
+

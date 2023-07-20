@@ -121,7 +121,7 @@
 
          {% for employee in page_obj_phys %}
          <div id="d-q-ans-container_{{forloop.counter}}" class="num" style="border-radius: 60px; padding-top: 35px; width: 850px; margin:0 auto; background-color:#FFFFFF;text-align: center;">
-         <img align="right" id="spr-info" src="{% static 'img\question.png' %}">
+         <img align="right" style="margin-right:10px;" id="spr-info" src="{% static 'img\question.png' %}">
          <h1 class="qtext_{{forloop.counter}}" id="mydiv" style="margin-bottom: 30px; color: #008000;" ><strong>Вопрос № {{forloop.counter}}</strong></h1>
          <span style="font-size: 200%; padding-left:10px;padding-right:10px" class="qtext_{{forloop.counter}}" >{{ employee.content }}</span>
          <div>
@@ -152,7 +152,7 @@
       <script id="withIframe_l" type="text/template">
          {% for employee in page_obj_legal %}
              <div id="d-q-ans-container_{{forloop.counter}}" class="num" style="border-radius: 60px; padding-top: 35px; width: 850px; margin:0 auto; background-color:#FFFFFF;text-align: center;">
-                <img align="right" id="spr-info" src="{% static 'img\question.png' %}">
+                <img align="right" style="margin-right:10px;" id="spr-info" src="{% static 'img\question.png' %}">
                 <h1 class="qtext_{{forloop.counter}}" id="mydiv" style="margin-bottom: 30px; color: #008000;" ><strong>Вопрос № {{forloop.counter}}</strong></h1>
                 <span style="font-size: 200%; padding-left:10px;padding-right:10px" class="qtext_{{forloop.counter}}" >{{ employee.content }}</span>
                 <div>
@@ -185,7 +185,7 @@
          <br><br>
          <div class="qcontainer " id="qcont" width="100%">
             <div id="d-q-ans-container_0" class="num" style="border-radius: 60px; padding-top: 35px; width: 850px; margin:0 auto; background-color:#FFFFFF;text-align: center;">
-               <img align="right" id="spr-info-0" src="{% static 'img\question.png' %}">
+               <img align="right" style="margin-right:10px;" id="spr-info-0" src="{% static 'img\question.png' %}">
                <h2 style="font-size=100%; margin-bottom: 30px;" class="qtext_0" >Продавец является физическим или юридическим лицом?</h2>
                <div>
                   <br><br>

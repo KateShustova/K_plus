@@ -4,13 +4,18 @@
       <meta charset="utf-8">
       <meta name="viewport">
       <title>Терем-ОК</title>
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-      <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.css" rel="stylesheet"/>
+      {% comment %} <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> {% endcomment %}
+      {% comment %} <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.css" rel="stylesheet"/> {% endcomment %}
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
    </head>
    <body style="background:#f6f7f8; font-family:'Roboto'">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
       <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
          <div class="container-fluid">
             <a class="navbar-brand" href="#main_page">
@@ -115,13 +120,22 @@
          background-color:#008000;
          }
       </style>
+
+      <script>
+         const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+         const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+         $(document).ready (function (){
+            $('[data-toggle="tooltip"]').tooltip ();
+          });
+      </script>
+       
       <!-- Блок с тектом и номером вопроса теста для физиков -->
       <script id="withIframe" type="text/template">
          <!-- Кнопки теста для вопросов физиков -->
 
          {% for employee in page_obj_phys %}
          <div id="d-q-ans-container_{{forloop.counter}}" class="num" style="border-radius: 60px; padding-top: 35px; width: 850px; margin:0 auto; background-color:#FFFFFF;text-align: center;">
-         <img align="right" style="margin-right:10px;" id="spr-info" src="{% static 'img\question.png' %}">
+         <img align="right" style="margin-right:10px;" title="{{ employee.info }}" src="{% static 'img\question.png' %}">
          <h1 class="qtext_{{forloop.counter}}" id="mydiv" style="margin-bottom: 30px; color: #008000;" ><strong>Вопрос № {{forloop.counter}}</strong></h1>
          <span style="font-size: 200%; padding-left:10px;padding-right:10px" class="qtext_{{forloop.counter}}" >{{ employee.content }}</span>
          <div>
@@ -152,7 +166,7 @@
       <script id="withIframe_l" type="text/template">
          {% for employee in page_obj_legal %}
              <div id="d-q-ans-container_{{forloop.counter}}" class="num" style="border-radius: 60px; padding-top: 35px; width: 850px; margin:0 auto; background-color:#FFFFFF;text-align: center;">
-                <img align="right" style="margin-right:10px;" id="spr-info" src="{% static 'img\question.png' %}">
+                <img align="right" style="margin-right:10px;" title="{{ employee.info }}" id="spr-info" src="{% static 'img\question.png' %}">
                 <h1 class="qtext_{{forloop.counter}}" id="mydiv" style="margin-bottom: 30px; color: #008000;" ><strong>Вопрос № {{forloop.counter}}</strong></h1>
                 <span style="font-size: 200%; padding-left:10px;padding-right:10px" class="qtext_{{forloop.counter}}" >{{ employee.content }}</span>
                 <div>
@@ -185,7 +199,7 @@
          <br><br>
          <div class="qcontainer " id="qcont" width="100%">
             <div id="d-q-ans-container_0" class="num" style="border-radius: 60px; padding-top: 35px; width: 850px; margin:0 auto; background-color:#FFFFFF;text-align: center;">
-               <img align="right" style="margin-right:10px;" id="spr-info-0" src="{% static 'img\question.png' %}">
+               <img align="right" style="margin-right:10px;" src="{% static 'img\question.png' %}">
                <h2 style="font-size=100%; margin-bottom: 30px;" class="qtext_0" >Продавец является физическим или юридическим лицом?</h2>
                <div>
                   <br><br>

@@ -1,3 +1,8 @@
+import myJson from 'consultant/project/questions_phys.json' assert {type: 'json'};
+console.log("qqqq");
+             console.log(myJson);
+
+
 function btn_click_mark(element, id, value) {
     element.onclick = function(event) {
         document.getElementById('d-q-ans-container_' + id).setAttribute('data-last-value', element.value);

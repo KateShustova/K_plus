@@ -17,12 +17,12 @@ function pagination_init(cnt, qc) {
         element = document.getElementById("numbers_" + i);
         if (!sessionStorage.getItem(i)) {
             if (set.has(i)) {
-                element.style = "border-radius: 40px; height:50px; width:50px; color:#800000;margin-right: 25px;border: 2.5px solid #01010A;font-size: 25px;";
+                element.style = "border-radius: 40px; height:50px; width:50px; color:#01010a;margin-right: 25px;border: 2.5px solid #e86b52;font-size: 25px;";
             } else {
-                element.style = "border-radius: 40px; height:50px; width:50px; color:#800000;margin-right: 25px;border: 2.5px solid #E86B52;font-size: 25px;";
+                element.style = "border-radius: 40px; height:50px; width:50px; color:#01010a;margin-right: 25px;border: 2.5px solid #1515ea;font-size: 25px;";
             }
         } else {
-            element.style = "border-radius: 40px; height:50px; width:50px; color:#800000;margin-right: 25px;border: 2.5px solid #1515EA;font-size: 25px;";
+            element.style = "border-radius: 40px; height:50px; width:50px; color:#01010a;margin-right: 25px;border: 2.5px solid #1515ea;font-size: 25px;";
         }
     }
     element_first = document.getElementById("numbers_1");

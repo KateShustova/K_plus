@@ -4,6 +4,7 @@ function btn_click_mark(element, id, value) {
         update_data_in_localstorage(id, value);
         pagination_button(event, id, value);
         check();
+        display_risks();
     };
 };
 

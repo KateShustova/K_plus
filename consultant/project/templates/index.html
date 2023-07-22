@@ -231,9 +231,10 @@
              {% endfor %}
       </script>
       <div class="container">
-         <!-- Блок с первым вопросом (юр/физ) -->
+         
          <h1 class="text-center" id="test_page" style="padding-top: 100px; margin-top: -80px; margin-bottom: 80px; width: 80%; margin:0 auto;"><strong>Для анализа рисков при покупке дома, ответьте на вопросы</strong></h1>
          <br>
+         <!-- Блок с первым вопросом (юр/физ) -->
          <div class="qcontainer " id="qcont" width="100%">
             <div id="d-q-ans-container_0" class="num" style="border-radius: 60px; padding-top: 35px; width: 850px; margin:0 auto; background-color:#FFFFFF;text-align: center;">
                <h2 style="font-size=100%; margin-bottom: 30px;" class="qtext_0" >Продавец является физическим или юридическим лицом?</h2>
@@ -294,7 +295,9 @@
                </script>
             </label>
          </div>
+
          <br><br>
+
          <!-- Отображение цифр в кружках-->
          <div class="paginator" align="center" id="pag_id" style="width:70%;margin:0 auto;"></div>
          <!-- Отображение цифр в кружках на вопросах физиков-->
@@ -337,6 +340,7 @@
          <script src="{% static 'js_code/button_click.js' %}"> </script>
          <script src="{% static 'js_code/update_user_type.js' %}"> </script>
          <script src="{% static 'js_code/check_correct_ans.js' %}"> </script>
+         <script src="{% static 'js_code/display_risks.js' %}"> </script>
 
 
          <!-- Обработчик клика на кнопки вопроса юр/физ-->
@@ -375,12 +379,41 @@
                  check();
              };
          </script>
-
-
       </div>
+
       <br><br>
-      <div class="risk-info">
-         <h1 class="text-center" id="risk-page" style="margin-bottom: 80px; width: 950px;margin:0 auto;"><strong>Риски при покупке индивидуального жилого дома в вашем случае</strong></h1>
+
+      <!-- Страница вывода рисков -->
+      
+      <div>
+
+         <style>
+            .download {
+            border-radius: 20px;
+            padding: 8px;
+            height:60px;
+            background-color:#84b45c;
+            color:#464140;
+            font-size: 24px;
+            }
+            .download:hover {
+            background-color:#F0F0F0;
+            color:#464140;
+            text-decoration: none;
+            }
+         </style>
+         <h1 class="text-center" id="documents_page" style="padding-top: 80px; margin-top: -10px; margin-bottom: 80px; width: 80%; margin:0 auto;"><strong>Риски при покупке индивидуального жилого дома в вашем случае:</strong>
+         </h1>
+         <br>
+
+         <div id="risk-list"></div>
+
+         <script>
+            display_risks();
+         </script>
+               <br>
+            </div>
+         </div>
       </div>
    </body>
 </html>

@@ -150,15 +150,30 @@
 
       <!-- Блок с тектом и номером вопроса теста для физиков -->
       <script id="withIframe" type="text/template">
+         <div id="d-q-ans-container-last" style="border-radius: 60px; padding-top: 50px; width: 800px; height: 300px; margin:0 auto; background-color:#FFFFFF;text-align: center;display: none">
+            <div style="position: relative; top: 50%; transform: translateY(-60%);">
+                <h1 style="margin-bottom: 80px;" >Вы прошли опрос </h1>
+               <span style="font-size: 200%; padding-left:20px;padding-right:20px">Нажмите "Посмотреть риски", чтобы перейти к рискам</span>
+               </div>
+             </div>
          <!-- Кнопки теста для вопросов физиков -->
 
          {% for employee in page_obj_phys %}
-         <div id="d-q-ans-container_{{forloop.counter}}" class="num" style="border-radius: 60px; padding-top: 35px; width: 850px; height: 650px; margin:0 auto; background-color:#FFFFFF;text-align: center;">
-             <div style="position: relative; top: 50%; transform: translateY(-50%);">
-         <span style="font-size: 200%; padding-left:10px;padding-right:10px" class="qtext_{{forloop.counter}}" >{{ employee.content }}</span>
+         <div id="d-q-ans-container_{{forloop.counter}}" class="num" style="position: relative;border-radius: 60px; padding-top: 35px; width: 950px; height: 450px; margin:0 auto; background-color:#FFFFFF;text-align: center;">
+
+            <div style="position: relative; top: 50%; transform: translateY(-80%);">
+            <span style="font-size: 200%; padding-left:10px;padding-right:10px" class="qtext_{{forloop.counter}}" >{{ employee.content }}</span>
                </div>
-         <img align="right" style="margin-right:10px;" title="{{ employee.info }}" src="{% static 'img\question.png' %}">
+
+            <div style="position: absolute; top: 20px; left: 37%">
          <h1 class="qtext_{{forloop.counter}}" id="mydiv" style="margin-bottom: 30px; color: #008000;" ><strong>Вопрос № {{forloop.counter}}</strong></h1>
+                </div>
+
+            <div style="position: absolute; top: 20px; left: 90%">
+            <img align="right" style="margin-right:10px;" title="{{ employee.info }}" src="{% static 'img\question.png' %}">
+               </div>
+
+            <div style="position: absolute; bottom: 0; left: 25%">
          <div style="position: relative; top: 50%; transform: translateY(0%);">
             <br><br>
             <div class="rb-chk-container otp-row_{{forloop.counter}}" style="text-align: center;">
@@ -179,6 +194,7 @@
                </label>
             </div>
             <br>
+            </div>
          </div>
          </div>
          {% endfor %}
@@ -201,33 +217,51 @@
 
       <!-- Блок с тектом и номером вопроса теста для юриков -->
       <script id="withIframe_l" type="text/template">
-         {% for employee in page_obj_legal %}
-             <div id="d-q-ans-container_{{forloop.counter}}" class="num" style="border-radius: 60px; padding-top: 35px; width: 850px; margin:0 auto; background-color:#FFFFFF;text-align: center;">
-                <img align="right" style="margin-right:10px;" title="{{ employee.info }}" id="spr-info" src="{% static 'img\question.png' %}">
-                <h1 class="qtext_{{forloop.counter}}" id="mydiv" style="margin-bottom: 30px; color: #008000;" ><strong>Вопрос № {{forloop.counter}}</strong></h1>
-                <span style="font-size: 200%; padding-left:10px;padding-right:10px" class="qtext_{{forloop.counter}}" >{{ employee.content }}</span>
-                <div>
-                   <br><br>
-                   <div class="rb-chk-container otp-row_{{forloop.counter}}" style="text-align: center;">
-                      <label class="otp-input s-view-input otp-radiobutton_{{forloop.counter}}" style="margin-right: 45px;">
-                      <a id="t_ans_35636_{{forloop.counter}}">
-                      <button class="answer" type="button" value=1 style="width:115px">Да</button>
-                      </a>
-                      </label>
-                      <label class="otp-input s-view-input otp-radiobutton_{{forloop.counter}}" style="margin-right: 45px;">
-                      <a id="t_ans_35637_{{forloop.counter}}">
-                      <button class="answer" type="button" value=1 style="width:115px">Нет</button>
-                      </a>
-                      </label>
-                      <label class="otp-input s-view-input otp-radiobutton_{{forloop.counter}}" style="margin-right: 45px;">
-                      <a id="t_ans_35638_{{forloop.counter}}">
-                      <button class="answer" type="button" value=1 style="width:115px">Пропуск</button>
-                      </a>
-                      </label>
-                   </div>
-                   <br>
-                </div>
+            <div id="d-q-ans-container-last" style="border-radius: 60px; padding-top: 20px; width: 850px; height: 300px; margin:0 auto; background-color:#FFFFFF;text-align: center;display: none">
+            <div style="position: relative; top: 50%; transform: translateY(-60%);">
+                <h1 style="margin-bottom: 80px;" >Вы прошли опрос </h1>
+               <span style="font-size: 200%; padding-left:20px;padding-right:20px">Нажмите "Посмотреть риски", чтобы перейти к рискам</span>
+               </div>
              </div>
+         {% for employee in page_obj_legal %}
+             <div id="d-q-ans-container_{{forloop.counter}}" class="num" style="position: relative;border-radius: 60px; padding-top: 35px; width: 950px; height: 450px; margin:0 auto; background-color:#FFFFFF;text-align: center;">
+
+                  <div style="position: relative; top: 50%; transform: translateY(-80%);">
+                  <span style="font-size: 200%; padding-left:10px;padding-right:10px" class="qtext_{{forloop.counter}}" >{{ employee.content }}</span>
+                     </div>
+
+                  <div style="position: absolute; top: 20px; left: 37%">
+               <h1 class="qtext_{{forloop.counter}}" id="mydiv" style="margin-bottom: 30px; color: #008000;" ><strong>Вопрос № {{forloop.counter}}</strong></h1>
+                      </div>
+
+                  <div style="position: absolute; top: 20px; left: 90%">
+                  <img align="right" style="margin-right:10px;" title="{{ employee.info }}" src="{% static 'img\question.png' %}">
+                     </div>
+
+                  <div style="position: absolute; bottom: 0; left: 25%">
+               <div style="position: relative; top: 50%; transform: translateY(0%);">
+                  <br><br>
+                  <div class="rb-chk-container otp-row_{{forloop.counter}}" style="text-align: center;">
+                     <label class="otp-input s-view-input otp-radiobutton_{{forloop.counter}}" style="margin-right: 45px;">
+                     <a id="t_ans_35636_{{forloop.counter}}">
+                     <button class="answer" type="button" value=1 style="width:115px">Да</button>
+                     </a>
+                     </label>
+                     <label class="otp-input s-view-input otp-radiobutton_{{forloop.counter}}" style="margin-right: 45px;">
+                     <a id="t_ans_35637_{{forloop.counter}}">
+                     <button class="answer" type="button" value=1 style="width:115px">Нет</button>
+                     </a>
+                     </label>
+                     <label class="otp-input s-view-input otp-radiobutton_{{forloop.counter}}" style="margin-right: 45px;">
+                     <a id="t_ans_35638_{{forloop.counter}}">
+                     <button class="answer" type="button" value=1 style="width:115px">Пропуск</button>
+                     </a>
+                     </label>
+                  </div>
+                  <br>
+                  </div>
+               </div>
+               </div>
              {% endfor %}
       </script>
       <div class="container">
@@ -358,7 +392,7 @@
                pagination_init(21, 1); // инициализируем кнопки переключения вопросов
                pagination_switch(21); // событие переключения вопроса
 
-                 {% for employee in page_obj_legal %}
+                 {% for employee in page_obj_phys %}
                      foo({{forloop.counter}});
                  {% endfor %}
                check();

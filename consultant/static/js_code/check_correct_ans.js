@@ -1,10 +1,10 @@
 function check_correct_answer(){
     if(document.getElementById("d-q-ans-container_0") === null){
+
+        var current_question_id = sessionStorage.getItem("now") - 1
         for (var [key, value] of Object.entries(sessionStorage)) {
             if (!isNaN(parseInt(key))){
                 var element = document.getElementById("numbers_" + key);
-
-                var current_question_id = sessionStorage.getItem("now") - 1
 
                 if (sessionStorage.getItem("user_type") === "legal") {
                         console.log("legal");

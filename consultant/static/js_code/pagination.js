@@ -1,4 +1,23 @@
 function update(num_, div_num, value) {
+    console.log("sessionStorage");
+    console.log(sessionStorage);
+    if (sessionStorage.getItem("user_type") == "phys"){
+        if (sessionStorage.getItem("now") == "21"){
+            document.getElementById("d-q-ans-container-last").style.display = "block";
+        }
+        else{
+            document.getElementById("d-q-ans-container-last").style.display = "none";
+        }
+    }
+    else{
+        if (sessionStorage.getItem("now") == "18"){
+            document.getElementById("d-q-ans-container-last").style.display = "block";
+        }
+        else{
+            document.getElementById("d-q-ans-container-last").style.display = "none";
+        }
+    }
+
     var element;
     var set = new Set(JSON.parse(sessionStorage.getItem("risks")));
     for (var i = 1; i <= div_num.length; i++) {
@@ -20,6 +39,7 @@ function update(num_, div_num, value) {
             var element = document.getElementById("numbers_" + i);
             element.style.backgroundColor = "#808083";
             div_num[i - 1].style.display = "block";
+            document.getElementById("d-q-ans-container-last").style.display = "none";
         }
     }
     var t = num_ + 1;

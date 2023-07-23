@@ -42,8 +42,7 @@ function update(num_, div_num, value) {
             document.getElementById("d-q-ans-container-last").style.display = "none";
         }
     }
-    var t = num_ + 1;
-    check_correct_answer();
+//    check_correct_answer();
 }
 //#1515ea - blue
 //#01010a - black
@@ -60,7 +59,10 @@ function pagination_button(event, index) {
         save_data_to_localstorage(index);
     }
     update(num_, div_num);
-
+    check_correct_answer();
+    var t = num_ + 1;
+    var element = document.getElementById("numbers_" + t);
+    element.style.backgroundColor = "#808083";
 }
 
 
@@ -85,5 +87,9 @@ function pagination(event) {
     }
 
     update(num_, div_num);
+    check_correct_answer();
+    var t = num_ + 1;
+    var element = document.getElementById("numbers_" + t);
+    element.style.backgroundColor = "#808083";
 };
 

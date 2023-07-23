@@ -1,7 +1,7 @@
 function btn_click_mark(element, id, value) {
     element.onclick = function(event) {
         document.getElementById('d-q-ans-container_' + id).setAttribute('data-last-value', element.value);
-        update_data_in_localstorage(id, value);
+        update_data_in_localstorage(id, value, false);
         pagination_button(event, id, value);
         check();
     };

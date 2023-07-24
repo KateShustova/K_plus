@@ -432,17 +432,15 @@
 
          <!-- Страница вывода рисков -->
          
-         <div>
+         <div style="height:fit-content">
             <h1 class="text-center" id="risk_page" style="padding-top: 80px; margin-top: -10px; margin-bottom: 80px; width: 80%; margin:0 auto;"><strong>Риски при покупке индивидуального жилого дома в вашем случае:</strong>
             </h1>
-            <br>
             <div class="cont-ref d-flex justify-content-center" width="100%">
                <div class="container" style="padding-top:20px">
                   {% for question in page_obj_phys %}
-                     <div id="risk_message_{{forloop.counter}}" style="border-radius: 30px; padding:10px;width:90%; background-color:#8DD5547D;font-size:12px;text-align: center; display:none">
+                     <div id="risk_message_{{forloop.counter}}" style="border-radius: 30px; padding:10px; margin:20px;width:90%; background-color:#FFFFFF; border: 2.5px solid #e86b52;font-size:12px;text-align: center; display:none">
                         <span style="font-size: 160%; padding-left:10px;padding-right:10px">Вопрос {{question.id }} : {{ question.risk |safe }}</span>
                      </div>
-                     <br>
                   {% endfor %}
                </div>
             </div>

@@ -16,6 +16,15 @@
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
       <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+      <style>
+         .nav-link{
+            color:#C0C0C0;
+            font-size: 120%;
+         }
+         .nav-link:hover {
+            color:#FFFFFF;
+         }
+      </style>
       <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
          <div class="container-fluid">
             <a class="navbar-brand" href="#main_page">
@@ -53,315 +62,403 @@
             color:#FFFFFF;
          }
       </style>
-      <div class="bg-image position-relative" id="main_page">
-         <img src="{% static 'img\cover.jpg' %}" width="100%" >
-         <div class="mask position-absolute top-0 end-0 bottom-0 start-0 " style="background-color: rgba(0, 0, 0, 0.55)">
-            <div class="container d-flex h-100">
-               <div class="row">
-                  <div class="d-flex col-lg-6 justify-content-center" style="flex-direction: column;">
-                     
-                     <img src="{% static 'img/лого.svg' %}" alt="Пока не работает">
-                     <br>
-                     <a href="#test_page" class="d-flex justify-content-center" style="text-decoration: none;">
-                        <button class="main-button">Анализировать риски</button>
-                     </a>
-                     
-                  </div>
-                  <div class="col-lg-1"></div>
-                  <div class="col-lg-5 d-flex align-items-center">
-                     <ul class='triangles'>
-                        <li  class="h2 text-white">Анализ рисков при покупке индивидуального жилого дома</li>
+      <div class="content">
+         <div class="bg-image position-relative" id="main_page">
+            <img src="{% static 'img\cover.jpg' %}" width="100%" >
+            <div class="mask position-absolute top-0 end-0 bottom-0 start-0 " style="background-color: rgba(0, 0, 0, 0.55)">
+               <div class="container d-flex h-100">
+                  <div class="row">
+                     <div class="d-flex col-lg-6 justify-content-center" style="flex-direction: column;">
+                        
+                        <img src="{% static 'img/лого.svg' %}" alt="Пока не работает">
                         <br>
-                        <li  class="h2 text-white">Подборка сервисов для проверки всех нюансов сделки</li>
-                        <br>
-                        <li  class="h2 text-white">Индивидуальная оценка рисков при заключении договора</li>
-                     </ul>
+                        <a href="#test_page" class="d-flex justify-content-center" style="text-decoration: none;">
+                           <button class="main-button">Анализировать риски</button>
+                        </a>
+                        
+                     </div>
+                     <div class="col-lg-1"></div>
+                     <div class="col-lg-5 d-flex align-items-center">
+                        <ul class='triangles'>
+                           <li  class="h2 text-white">Анализ рисков при покупке индивидуального жилого дома</li>
+                           <br>
+                           <li  class="h2 text-white">Подборка сервисов для проверки всех нюансов сделки</li>
+                           <br>
+                           <li  class="h2 text-white">Индивидуальная оценка рисков при заключении договора</li>
+                        </ul>
+                     </div>
                   </div>
                </div>
             </div>
          </div>
-      </div>
-      <style>
-         .download {
-         border-radius: 20px;
-         padding: 8px;
-         height:60px;
-         background-color:#84b45c;
-         color:#464140;
-         font-size: 24px;
-         }
-         .download:hover {
-         background-color:#F0F0F0;
-         color:#464140;
-         text-decoration: none;
-         }
-      </style>
-      <h1 class="text-center" id="documents_page" style="padding-top: 80px; margin-top: -10px; margin-bottom: 80px; width: 80%; margin:0 auto;"><strong>Перед расчётом рисков, вам нужно собрать необходимую информацию:</strong>
-      </h1>
-      <br>
-      <div class="bg-image position-relative">
-         <img src="{% static 'img\background_docs.jpg' %}" width="100%" >
-         <div class="mask position-absolute top-0 end-0 bottom-0 start-0 " style="background-color: rgba(0, 0, 0, 0.5)">
-            <br>
-            <div class="cont-ref d-flex justify-content-center" width="100%">
-               <div class="container" style="padding-top:20px">
-                  {% for doc in docs %}
-                  <div style="border-radius: 30px; padding:10px;width:90%; background-color:#FFFFFF;font-size:12px;text-align: center;">
-                     <span style="font-size: 160%; padding-left:10px;padding-right:10px">{{ doc.content |safe }}</span>
-                  </div>
-                  <br>
-                  {% endfor %}
-               </div>
-               <div class="d-flex justify-content-center align-items-start" style="padding-top:60px">
-                  <p>
-                     <a href="{% static 'doc_list.pdf' %}" target="blank" rel="noopener noreferrer"><img src="{% static 'img/documents.png' %}" style="margin-left:44px"width="40%" alt="Пока не работает"></a>
-                     <br>
-                     <a href="{% static 'doc_list.pdf' %}" target="blank" rel="noopener noreferrer" class="download" download>Скачать документы</a>
-                  </p>
-               </div>
-            </div>
-         </div>
-      </div>
-      <!-- Стиль кнопок в тесте -->
-      <style>
-         .answer {
-         border-radius: 40px;
-         border: none;
-         height:60px;
-         background-color:#464140;
-         color:#FFFFFF;
-         font-size: 22px;
-         }
-         .answer:hover {
-         background-color:#808080;
-         }
-         .answer:active {
-         background-color:#008000;
-         }
-      </style>
-
-      <script>
-         const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-         const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
-         $(document).ready (function (){
-            $('[data-toggle="tooltip"]').tooltip ();
-          });
-      </script>
-       
-      <!-- Блок с тектом и номером вопроса теста для физиков -->
-      <script id="withIframe" type="text/template">
-         <!-- Кнопки теста для вопросов физиков -->
-
-         {% for employee in page_obj_phys %}
-         <div id="d-q-ans-container_{{forloop.counter}}" class="num" style="border-radius: 60px; padding-top: 35px; width: 850px; margin:0 auto; background-color:#FFFFFF;text-align: center;">
-         <img align="right" style="margin-right:10px;" title="{{ employee.info }}" src="{% static 'img\question.png' %}">
-         <h1 class="qtext_{{forloop.counter}}" id="mydiv" style="margin-bottom: 30px; color: #008000;" ><strong>Вопрос № {{forloop.counter}}</strong></h1>
-         <span style="font-size: 200%; padding-left:10px;padding-right:10px" class="qtext_{{forloop.counter}}" >{{ employee.content }}</span>
-         <div>
-            <br><br>
-            <div class="rb-chk-container otp-row_{{forloop.counter}}" style="text-align: center;">
-               <label class="otp-input s-view-input otp-radiobutton_{{forloop.counter}}" style="margin-right: 45px;">
-               <a id="t_ans_35636_{{forloop.counter}}">
-               <button class="answer" type="button" value=1 style="width:115px">Да</button>
-               </a>
-               </label>
-               <label class="otp-input s-view-input otp-radiobutton_{{forloop.counter}}" style="margin-right: 45px;">
-               <a id="t_ans_35637_{{forloop.counter}}">
-               <button class="answer" type="button" value=1 style="width:115px">Нет</button>
-               </a>
-               </label>
-               <label class="otp-input s-view-input otp-radiobutton_{{forloop.counter}}" style="margin-right: 45px;">
-               <a id="t_ans_35638_{{forloop.counter}}">
-               <button class="answer" type="button" value=1 style="width:115px">Пропуск</button>
-               </a>
-               </label>
-            </div>
-            <br>
-         </div>
-         </div>
-         {% endfor %}
-      </script>
-      <!-- Блок с тектом и номером вопроса теста для юриков -->
-      <script id="withIframe_l" type="text/template">
-         {% for employee in page_obj_legal %}
-             <div id="d-q-ans-container_{{forloop.counter}}" class="num" style="border-radius: 60px; padding-top: 35px; width: 850px; margin:0 auto; background-color:#FFFFFF;text-align: center;">
-                <img align="right" style="margin-right:10px;" title="{{ employee.info }}" id="spr-info" src="{% static 'img\question.png' %}">
-                <h1 class="qtext_{{forloop.counter}}" id="mydiv" style="margin-bottom: 30px; color: #008000;" ><strong>Вопрос № {{forloop.counter}}</strong></h1>
-                <span style="font-size: 200%; padding-left:10px;padding-right:10px" class="qtext_{{forloop.counter}}" >{{ employee.content }}</span>
-                <div>
-                   <br><br>
-                   <div class="rb-chk-container otp-row_{{forloop.counter}}" style="text-align: center;">
-                      <label class="otp-input s-view-input otp-radiobutton_{{forloop.counter}}" style="margin-right: 45px;">
-                      <a id="t_ans_35636_{{forloop.counter}}">
-                      <button class="answer" type="button" value=1 style="width:115px">Да</button>
-                      </a>
-                      </label>
-                      <label class="otp-input s-view-input otp-radiobutton_{{forloop.counter}}" style="margin-right: 45px;">
-                      <a id="t_ans_35637_{{forloop.counter}}">
-                      <button class="answer" type="button" value=1 style="width:115px">Нет</button>
-                      </a>
-                      </label>
-                      <label class="otp-input s-view-input otp-radiobutton_{{forloop.counter}}" style="margin-right: 45px;">
-                      <a id="t_ans_35638_{{forloop.counter}}">
-                      <button class="answer" type="button" value=1 style="width:115px">Пропуск</button>
-                      </a>
-                      </label>
-                   </div>
-                   <br>
-                </div>
-             </div>
-             {% endfor %}
-      </script>
-      <div class="container">
-         <!-- Блок с первым вопросом (юр/физ) -->
-         <h1 class="text-center" id="test_page" style="padding-top: 100px; margin-top: -80px; margin-bottom: 80px; width: 80%; margin:0 auto;"><strong>Для анализа рисков при покупке дома, ответьте на вопросы</strong></h1>
-         <br>
-         <div class="qcontainer " id="qcont" width="100%">
-            <div id="d-q-ans-container_0" class="num" style="border-radius: 60px; padding-top: 35px; width: 850px; margin:0 auto; background-color:#FFFFFF;text-align: center;">
-               <h2 style="font-size=100%; margin-bottom: 30px;" class="qtext_0" >Продавец является физическим или юридическим лицом?</h2>
-               <div>
-                  <br><br>
-                  <div class="rb-chk-container otp-row_0" style="text-align: center;">
-                     <label class="otp-input s-view-input otp-radiobutton_0" style="margin-right: 80px;">
-                     <a id="t_ans_35636_0">
-                     <button class="answer" type="button" value=1 style="width:200px;">Физическим</button>
-                     </a>
-                     </label>
-                     <label class="otp-input s-view-input otp-radiobutton_0" style="margin-right: 45px;">
-                     <a id="t_ans_35637_0">
-                     <button class="answer" type="button" value=1 style="width:200px;">Юридическим</button>
-                     </a>
-                     </label>
-                  </div>
-                  <br>
-               </div>
-            </div>
-         </div>
-         <!-- Счетчик рисков -->
-         <div id="risk-count" class = "risks" style="border-radius: 60px; padding-top: 8px; padding-bottom: 12px; width: 600px; margin:0 auto; background-color:#E3E0E0; border-top-left-radius: 0;border-top-right-radius: 0;text-align: center;">
-            <span style="font-size: 180%; padding-left:10px;padding-right:10px;" id="risks" ><strong> </strong></span>
-            {% load static %}
-            <script src="{% static 'js_code/check.js' %}"></script>
-            <!-- Логика счетчика рисков -->
-            <script>
-               check();
-            </script>
-         </div>
-         <!-- Какой-то непонятный стиль -->
-         <br /><br class="height1" />
          <style>
-            br.height1 {
-            content: " ";
-            display: block;
+            .download {
+            border-radius: 20px;
+            padding: 8px;
+            height:60px;
+            background-color:#84b45c;
+            color:#464140;
+            font-size: 24px;
+            }
+            .download:hover {
+            background-color:#F0F0F0;
+            color:#464140;
+            text-decoration: none;
             }
          </style>
-         <div style="text-align: center;">
-            <!-- Ряд кнопок  -->
-            <label>
-               <!-- Кнопка "Посмотреть риски" в тесте -->
-               <button onclick="window.location.href='/risks';" type="button" class="btn btn-lg btn-block btn-primary" style="border: 1.8px solid #000000;border-radius: 40px; padding-top: 7px; width: 170px; height: 75px; margin:0 auto; background-color:#f6f7f8;color:#800000;text-align: center;font-size: 21px;text-transform: unset !important;display: inline-block;">
-               <strong>Посмотреть риски</strong></button>
-            </label>
-            <label style="margin-left: 50px;display: none;" id="btn_back">
-               <!-- Кнопка "Пройти заново" в тесте -->
-               <button id="btn_back_click" type="button" class="btn btn-lg btn-block btn-primary" style="border: 1.8px solid #000000;border-radius: 40px; padding-top: 7px; width: 170px; height: 75px; margin:0 auto; background-color:#f6f7f8;color:#800000;text-align: center;font-size: 21px;text-transform: unset !important;display: inline-block;">
-               <strong>Пройти заново</strong></button>
-               <script>
-                  var btn = document.getElementById('btn_back_click');
-                  btn.onclick = function(event) {
-                     location.href = "/#test_page";
-                    window.location.reload();
-                  };
-               </script>
-            </label>
+         <h1 class="text-center" id="documents_page" style="padding-top: 80px; margin-top: -10px; margin-bottom: 80px; width: 80%; margin:0 auto;"><strong>Перед расчётом рисков, вам нужно собрать необходимую информацию:</strong>
+         </h1>
+         <br>
+         <div class="bg-image position-relative">
+            <img src="{% static 'img\background_docs.jpg' %}" width="100%" >
+            <div class="mask position-absolute top-0 end-0 bottom-0 start-0 " style="background-color: rgba(0, 0, 0, 0.5)">
+               <br>
+               <div class="cont-ref d-flex justify-content-center" width="100%">
+                  <div class="container" style="padding-top:20px">
+                     {% for doc in docs %}
+                     <div style="border-radius: 30px; padding:10px;width:90%; background-color:#FFFFFF;font-size:12px;text-align: center;">
+                        <span style="font-size: 160%; padding-left:10px;padding-right:10px">{{ doc.content |safe }}</span>
+                     </div>
+                     <br>
+                     {% endfor %}
+                  </div>
+                  <div class="d-flex justify-content-center align-items-start" style="padding-top:60px">
+                     <p>
+                        <a href="{% static 'doc_list.pdf' %}" target="blank" rel="noopener noreferrer"><img src="{% static 'img/documents.png' %}" style="margin-left:44px"width="40%" alt="Пока не работает"></a>
+                        <br>
+                        <a href="{% static 'doc_list.pdf' %}" target="blank" rel="noopener noreferrer" class="download" download>Скачать документы</a>
+                     </p>
+                  </div>
+               </div>
+            </div>
          </div>
-         <br><br>
-         <!-- Отображение цифр в кружках-->
-         <div class="paginator" align="center" id="pag_id" style="width:70%;margin:0 auto;"></div>
-         <!-- Отображение цифр в кружках на вопросах физиков-->
-         <script id="withIframe-1" type="text/template">
-            {% for employee in page_obj_phys %}
-               <button id="numbers_{{forloop.counter}}" class="button-button" style="border-radius: 40px; border: 2.5px solid #E86B52; height:50px; width:50px; color:#800000;margin-right: 25px; font-size: 25px;">
-                  {{forloop.counter}}
-               </button>
-            {% endfor %}
-            <br><br>
-         </script>
-         <!-- Отображение цифр в кружках на вопросах юриков-->
-         <script id="withIframe_l-1" type="text/template">
-            {% for employee in page_obj_legal %}
-               <button id="numbers_{{forloop.counter}}" class="button-button" style="border-radius: 40px; border: 2.5px solid #E86B52; height:50px; width:50px; color:#800000;margin-right: 25px; font-size: 25px;">
-                  {{forloop.counter}}
-               </button>
-            {% endfor %}
-            <br><br>
-         </script>
-         <!-- Обработчик клика на кнопки теста-->
-         <script>
-            function foo(id){
-               var div = document.getElementById('d-q-ans-container_' + id);
-               var button_yes = document.getElementById('t_ans_35636_' + id);
-               var button_no = document.getElementById('t_ans_35637_' + id);
-               var button_skip = document.getElementById('t_ans_35638_' + id);
-               // sessionStorage.clear()
-               btn_click_mark(button_yes, id, 1);
-               btn_click_mark(button_no, id, 0);
-               btn_click(button_skip, id);
+         <!-- Стиль кнопок в тесте -->
+         <style>
+            .answer {
+            border-radius: 40px;
+            border: none;
+            height:60px;
+            background-color:#464140;
+            color:#FFFFFF;
+            font-size: 22px;
             }
-         </script>
-         <!--Загрузка скриптов-->
-         {% load static %}
-         <script src="{% static 'js_code/edit_storage.js' %}"> </script>
-         <script src="{% static 'js_code/pagination.js' %}"> </script>
-         <script src="{% static 'js_code/pagination_switch.js' %}"> </script>
-         <script src="{% static 'js_code/pagination_init.js' %}"> </script>
-         <script src="{% static 'js_code/button_click.js' %}"> </script>
-         <script src="{% static 'js_code/update_user_type.js' %}"> </script>
-         <!-- Обработчик клика на кнопки вопроса юр/физ-->
+            .answer:hover {
+            background-color:#808080;
+            }
+            .answer:active {
+            background-color:#008000;
+            }
+         </style>
+
          <script>
-            var button_phys = document.getElementById('t_ans_35636_0');
-            var button_legal = document.getElementById('t_ans_35637_0');
-
-            button_phys.onclick = function(event){
-               update_user_type("phys");
-               sessionStorage.setItem("user_type", "phys");
-               document.getElementById('d-q-ans-container_0').style.display = 'none';
-               document.getElementById('btn_back').style = "margin-left: 50px;";
-               document.getElementById("qcont").innerHTML = document.getElementById("withIframe").innerHTML;
-               document.getElementById("pag_id").innerHTML = document.getElementById("withIframe-1").innerHTML;
-               pagination_init(21, 1); // инициализируем кнопки переключения вопросов
-               pagination_switch(21); // событие переключения вопроса
-
-                 {% for employee in page_obj_legal %}
-                     foo({{forloop.counter}});
-                 {% endfor %}
-               check();
-               };
-
-            button_legal.onclick = function(event) {
-                  update_user_type("legal");
-                 document.getElementById('d-q-ans-container_0').style.display = 'none';
-                 document.getElementById('btn_back').style = "margin-left: 50px;";
-                 document.getElementById("qcont").innerHTML = document.getElementById("withIframe_l").innerHTML;
-                 document.getElementById("pag_id").innerHTML = document.getElementById("withIframe_l-1").innerHTML;
-                 pagination_init(18, 1); // инициализируем кнопки переключения вопросов
-                 pagination_switch(18); // событие переключения вопроса
-
-                 {% for employee in page_obj_legal %}
-                     foo({{forloop.counter}});
-                 {% endfor %}
-                 check();
-             };
+            const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+            const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+            $(document).ready (function (){
+               $('[data-toggle="tooltip"]').tooltip ();
+            });
          </script>
-         <!--      <script>-->
-         <!--         if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {-->
-         <!--           sessionStorage.clear();-->
-         <!--         }-->
-         <!--      </script>-->
+
+         <!-- Блок с тектом и номером вопроса теста для физиков -->
+         <script id="withIframe" type="text/template">
+            <div id="d-q-ans-container-last" style="border-radius: 60px; padding-top: 50px; width: 800px; height: 300px; margin:0 auto; background-color:#FFFFFF;text-align: center;display: none">
+               <div style="position: relative; top: 50%; transform: translateY(-60%);">
+                  <h1 style="margin-bottom: 80px;" >Вы прошли опрос </h1>
+                  <span style="font-size: 200%; padding-left:20px;padding-right:20px">Нажмите "Посмотреть риски", чтобы перейти к рискам</span>
+                  </div>
+               </div>
+            <!-- Кнопки теста для вопросов физиков -->
+
+            {% for employee in page_obj_phys %}
+            <div id="d-q-ans-container_{{forloop.counter}}" class="num" style="position: relative;border-radius: 60px; padding-top: 35px; width: 950px; height: 450px; margin:0 auto; background-color:#FFFFFF;text-align: center;">
+
+               <div style="position: relative; top: 50%; transform: translateY(-80%);">
+               <span style="font-size: 200%; padding-left:10px;padding-right:10px" class="qtext_{{forloop.counter}}" >{{ employee.content }}</span>
+                  </div>
+
+               <div style="position: absolute; top: 20px; left: 37%">
+            <h1 class="qtext_{{forloop.counter}}" id="mydiv" style="margin-bottom: 30px; color: #008000;" ><strong>Вопрос № {{forloop.counter}}</strong></h1>
+                  </div>
+
+               <div style="position: absolute; top: 20px; left: 90%">
+               <img align="right" style="margin-right:10px;" title="{{ employee.info }}" src="{% static 'img\question.png' %}">
+                  </div>
+
+               <div style="position: absolute; bottom: 0; left: 25%">
+            <div style="position: relative; top: 50%; transform: translateY(0%);">
+               <br><br>
+               <div class="rb-chk-container otp-row_{{forloop.counter}}" style="text-align: center;">
+                  <label class="otp-input s-view-input otp-radiobutton_{{forloop.counter}}" style="margin-right: 45px;">
+                  <a id="t_ans_35636_{{forloop.counter}}">
+                  <button class="answer" type="button" value=1 style="width:115px">Да</button>
+                  </a>
+                  </label>
+                  <label class="otp-input s-view-input otp-radiobutton_{{forloop.counter}}" style="margin-right: 45px;">
+                  <a id="t_ans_35637_{{forloop.counter}}">
+                  <button class="answer" type="button" value=1 style="width:115px">Нет</button>
+                  </a>
+                  </label>
+                  <label class="otp-input s-view-input otp-radiobutton_{{forloop.counter}}" style="margin-right: 45px;">
+                  <a id="t_ans_35638_{{forloop.counter}}">
+                  <button class="answer" type="button" value=1 style="width:115px">Пропуск</button>
+                  </a>
+                  </label>
+               </div>
+               <br>
+               </div>
+            </div>
+            </div>
+            {% endfor %}
+         </script>
+
+         <script>
+            let arr = [];
+            {% for employee in page_obj_phys %}
+               arr.push({{employee.correct_answer}});
+            {% endfor %}
+            sessionStorage.setItem("phys", arr);
+
+            let arr1 = [];
+            {% for employee in page_obj_legal %}
+               arr1.push({{employee.correct_answer}});
+            {% endfor %}
+            sessionStorage.setItem("legal", arr1);
+         </script>
+
+
+         <!-- Блок с тектом и номером вопроса теста для юриков -->
+         <script id="withIframe_l" type="text/template">
+               <div id="d-q-ans-container-last" style="border-radius: 60px; padding-top: 20px; width: 850px; height: 300px; margin:0 auto; background-color:#FFFFFF;text-align: center;display: none">
+               <div style="position: relative; top: 50%; transform: translateY(-60%);">
+                  <h1 style="margin-bottom: 80px;" >Вы прошли опрос </h1>
+                  <span style="font-size: 200%; padding-left:20px;padding-right:20px">Нажмите "Посмотреть риски", чтобы перейти к рискам</span>
+                  </div>
+               </div>
+            {% for employee in page_obj_legal %}
+               <div id="d-q-ans-container_{{forloop.counter}}" class="num" style="position: relative;border-radius: 60px; padding-top: 35px; width: 950px; height: 450px; margin:0 auto; background-color:#FFFFFF;text-align: center;">
+
+                     <div style="position: relative; top: 50%; transform: translateY(-80%);">
+                     <span style="font-size: 200%; padding-left:10px;padding-right:10px" class="qtext_{{forloop.counter}}" >{{ employee.content }}</span>
+                        </div>
+
+                     <div style="position: absolute; top: 20px; left: 37%">
+                  <h1 class="qtext_{{forloop.counter}}" id="mydiv" style="margin-bottom: 30px; color: #008000;" ><strong>Вопрос № {{forloop.counter}}</strong></h1>
+                        </div>
+
+                     <div style="position: absolute; top: 20px; left: 90%">
+                     <img align="right" style="margin-right:10px" title="{{ employee.info }}" src="{% static 'img\question.png' %}">
+                        </div>
+
+                     <div style="position: absolute; bottom: 0; left: 25%">
+                  <div style="position: relative; top: 50%; transform: translateY(0%);">
+                     <br><br>
+                     <div class="rb-chk-container otp-row_{{forloop.counter}}" style="text-align: center;">
+                        <label class="otp-input s-view-input otp-radiobutton_{{forloop.counter}}" style="margin-right: 45px;">
+                        <a id="t_ans_35636_{{forloop.counter}}">
+                        <button class="answer" type="button" value=1 style="width:115px">Да</button>
+                        </a>
+                        </label>
+                        <label class="otp-input s-view-input otp-radiobutton_{{forloop.counter}}" style="margin-right: 45px;">
+                        <a id="t_ans_35637_{{forloop.counter}}">
+                        <button class="answer" type="button" value=1 style="width:115px">Нет</button>
+                        </a>
+                        </label>
+                        <label class="otp-input s-view-input otp-radiobutton_{{forloop.counter}}" style="margin-right: 45px;">
+                        <a id="t_ans_35638_{{forloop.counter}}">
+                        <button class="answer" type="button" value=1 style="width:115px">Пропуск</button>
+                        </a>
+                        </label>
+                     </div>
+                     <br>
+                     </div>
+                  </div>
+                  </div>
+               {% endfor %}
+         </script>
+         <div class="container">
+            
+            <h1 class="text-center" id="test_page" style="padding-top: 100px; margin-top: -80px; margin-bottom: 80px; width: 80%; margin:0 auto;"><strong>Для анализа рисков при покупке дома, ответьте на вопросы</strong></h1>
+            <br>
+            <!-- Блок с первым вопросом (юр/физ) -->
+            <div class="qcontainer " id="qcont" width="100%">
+               <div id="d-q-ans-container_0" class="num" style="border-radius: 60px; padding-top: 35px; width: 850px; margin:0 auto; background-color:#FFFFFF;text-align: center;">
+                  <h2 style="font-size=100%; margin-bottom: 30px;" class="qtext_0" >Продавец является физическим или юридическим лицом?</h2>
+                  <div>
+                     <br><br>
+                     <div class="rb-chk-container otp-row_0" style="text-align: center;">
+                        <label class="otp-input s-view-input otp-radiobutton_0" style="margin-right: 80px;">
+                        <a id="t_ans_35636_0">
+                        <button class="answer" type="button" value=1 style="width:200px;">Физическим</button>
+                        </a>
+                        </label>
+                        <label class="otp-input s-view-input otp-radiobutton_0" style="margin-right: 45px;">
+                        <a id="t_ans_35637_0">
+                        <button class="answer" type="button" value=1 style="width:200px;">Юридическим</button>
+                        </a>
+                        </label>
+                     </div>
+                     <br>
+                  </div>
+               </div>
+            </div>
+            <!-- Счетчик рисков -->
+            <div id="risk-count" class = "risks" style="border-radius: 60px; padding-top: 8px; padding-bottom: 12px; width: 600px; margin:0 auto; background-color:#E3E0E0; border-top-left-radius: 0;border-top-right-radius: 0;text-align: center;">
+               <span style="font-size: 180%; padding-left:10px;padding-right:10px;" id="risks" ><strong> </strong></span>
+               {% load static %}
+               <script src="{% static 'js_code/check.js' %}"></script>
+               <!-- Логика счетчика рисков -->
+               <script>
+                  check();
+               </script>
+            </div>
+            <!-- Какой-то непонятный стиль -->
+            <br /><br class="height1" />
+            <style>
+               br.height1 {
+               content: " ";
+               display: block;
+               }
+            </style>
+            <div style="text-align: center;">
+               <!-- Ряд кнопок  -->
+               <label>
+                  <!-- Кнопка "Посмотреть риски" в тесте -->
+                  <a href="#risk_page">
+                     <button  type="button" class="btn btn-lg btn-block btn-primary" style="border: 1.8px solid #000000;border-radius: 40px; padding-top: 7px; width: 170px; height: 75px; margin:0 auto; background-color:#f6f7f8;color:#800000;text-align: center;font-size: 21px;text-transform: unset !important;display: inline-block;">
+                        <strong>Посмотреть риски</strong>
+                     </button>
+                  </a>
+               </label>
+               <label style="margin-left: 50px;display: none;" id="btn_back">
+                  <!-- Кнопка "Пройти заново" в тесте -->
+                  <button onclick="window.location.href='/#test_page';" id="btn_back_click" type="button" class="btn btn-lg btn-block btn-primary" style="border: 1.8px solid #000000;border-radius: 40px; padding-top: 7px; width: 170px; height: 75px; margin:0 auto; background-color:#f6f7f8;color:#800000;text-align: center;font-size: 21px;text-transform: unset !important;display: inline-block;">
+                  <strong>Пройти заново</strong></button>
+                  <script>
+                     var btn = document.getElementById('btn_back_click');
+                     btn.onclick = function(event) {
+                        location.href = "/#test_page";
+                     window.location.reload();
+                     sessionStorage.clear();
+                     };
+                  </script>
+               </label>
+            </div>
+
+            <br><br>
+
+            <!-- Отображение цифр в кружках-->
+            <div class="paginator" align="center" id="pag_id" style="width:70%;margin:0 auto;"></div>
+            <!-- Отображение цифр в кружках на вопросах физиков-->
+            <script id="withIframe-1" type="text/template">
+               {% for employee in page_obj_phys %}
+                  <button id="numbers_{{forloop.counter}}" class="button-button" style="border-radius: 40px; border: 2.5px solid #E86B52; height:50px; width:50px; color:#800000;margin-right: 25px; font-size: 25px;">
+                     {{forloop.counter}}
+                  </button>
+               {% endfor %}
+               <br><br>
+            </script>
+            <!-- Отображение цифр в кружках на вопросах юриков-->
+            <script id="withIframe_l-1" type="text/template">
+               {% for employee in page_obj_legal %}
+                  <button id="numbers_{{forloop.counter}}" class="button-button" style="border-radius: 40px; border: 2.5px solid #E86B52; height:50px; width:50px; color:#800000;margin-right: 25px; font-size: 25px;">
+                     {{forloop.counter}}
+                  </button>
+               {% endfor %}
+               <br><br>
+            </script>
+            <!-- Обработчик клика на кнопки теста-->
+            <script>
+               function foo(id){
+                  var div = document.getElementById('d-q-ans-container_' + id);
+                  var button_yes = document.getElementById('t_ans_35636_' + id);
+                  var button_no = document.getElementById('t_ans_35637_' + id);
+                  var button_skip = document.getElementById('t_ans_35638_' + id);
+                  // sessionStorage.clear()
+                  btn_click_mark(button_yes, id, 0);
+                  btn_click_mark(button_no, id, 1);
+                  btn_click(button_skip, id);
+               }
+            </script>
+            <!--Загрузка скриптов-->
+            {% load static %}
+            <script src="{% static 'js_code/edit_storage.js' %}"> </script>
+            <script src="{% static 'js_code/pagination.js' %}"> </script>
+            <script src="{% static 'js_code/pagination_switch.js' %}"> </script>
+            <script src="{% static 'js_code/pagination_init.js' %}"> </script>
+            <script src="{% static 'js_code/button_click.js' %}"> </script>
+            <script src="{% static 'js_code/update_user_type.js' %}"> </script>
+            <script src="{% static 'js_code/check_correct_ans.js' %}"> </script>
+            <script src="{% static 'js_code/display_risks.js' %}"> </script>
+
+
+            <!-- Обработчик клика на кнопки вопроса юр/физ-->
+            <script>
+               var button_phys = document.getElementById('t_ans_35636_0');
+               var button_legal = document.getElementById('t_ans_35637_0');
+
+               button_phys.onclick = function(event){
+                  update_user_type("phys");
+                  sessionStorage.setItem("user_type", "phys");
+                  document.getElementById('d-q-ans-container_0').style.display = 'none';
+                  document.getElementById('btn_back').style = "margin-left: 50px;";
+                  document.getElementById("qcont").innerHTML = document.getElementById("withIframe").innerHTML;
+                  document.getElementById("pag_id").innerHTML = document.getElementById("withIframe-1").innerHTML;
+                  pagination_init(21, 1); // инициализируем кнопки переключения вопросов
+                  pagination_switch(21); // событие переключения вопроса
+
+                  {% for employee in page_obj_phys %}
+                        foo({{forloop.counter}});
+                  {% endfor %}
+                  check();
+                  };
+
+               button_legal.onclick = function(event) {
+                     update_user_type("legal");
+                  document.getElementById('d-q-ans-container_0').style.display = 'none';
+                  document.getElementById('btn_back').style = "margin-left: 50px;";
+                  document.getElementById("qcont").innerHTML = document.getElementById("withIframe_l").innerHTML;
+                  document.getElementById("pag_id").innerHTML = document.getElementById("withIframe_l-1").innerHTML;
+                  pagination_init(18, 1); // инициализируем кнопки переключения вопросов
+                  pagination_switch(18); // событие переключения вопроса
+
+                  {% for employee in page_obj_legal %}
+                        foo({{forloop.counter}});
+                  {% endfor %}
+                  check();
+               };
+            </script>
+         </div>
+
+         <br><br>
+
+         <!-- Страница вывода рисков -->
+         
+         <div style="height:fit-content">
+            <h1 class="text-center" id="risk_page" style="padding-top: 80px; margin-top: -10px; margin-bottom: 80px; width: 80%; margin:0 auto;"><strong>Риски при покупке индивидуального жилого дома в вашем случае:</strong>
+            </h1>
+            <div class="cont-ref d-flex justify-content-center" width="100%">
+               <div class="container" style="padding-top:20px">
+                  {% for question in page_obj_phys %}
+                     <div id="risk_message_{{forloop.counter}}" style="border-radius: 30px; padding:10px; margin:20px;width:90%; background-color:#FFFFFF; border: 2.5px solid #e86b52;font-size:12px;text-align: center; display:none">
+                        <span style="font-size: 160%; padding-left:10px;padding-right:10px">Вопрос {{question.id }} : {{ question.risk |safe }}</span>
+                     </div>
+                  {% endfor %}
+               </div>
+            </div>
+         </div>
       </div>
-      <br><br>
-      <div class="risk-info">
-         <h1 class="text-center" id="risk-page" style="margin-bottom: 80px; width: 950px;margin:0 auto;"><strong>Риски при покупке индивидуального жилого дома в вашем случае</strong></h1>
-      </div>
+
+      <style>
+         .footer {
+            padding: 10px;
+            text-align: center;
+            background: #343a40;
+            color: #F0F0F0;
+            width: 100%;
+         }
+      </style>
+
+      <footer class="footer">
+         Данные, содержащиеся на сайте, являются справочными и носят информационный характер
+      </footer>
    </body>
 </html>

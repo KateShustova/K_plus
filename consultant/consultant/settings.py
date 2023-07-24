@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-t6&(oqn8z+s5@zlvp17rl%&(8!68*-r$cwfw**ymrb1alb-9ov
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['katesh.pythonanywhere.com']
+ALLOWED_HOSTS = ['katesh.pythonanywhere.com', '127.0.0.1']
 
 
 # Application definition

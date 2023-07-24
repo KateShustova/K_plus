@@ -15,7 +15,7 @@ function check_correct_answer(){
                         // Если ответ верный закрасить кружок зеленым и спрятать риск 
                         if (array_values[parseInt(key)-1] == value) {
 
-                            hide_risk_message(parseInt(key));
+                            hide_risk_message(parseInt(key),"legal");
 
                             update_data_in_localstorage(parseInt(key), value, true);
                             element.style = "border-radius: 40px; height:50px; width:50px; color:#01010a;margin-right: 25px;border: 2.5px solid #209404;font-size: 25px;";
@@ -25,7 +25,7 @@ function check_correct_answer(){
                             element.style = "border-radius: 40px; height:50px; width:50px; color:#01010a;margin-right: 25px;border: 2.5px solid #e86b52;font-size: 25px;";
                             save_data_to_localstorage(parseInt(key));
                             
-                            display_risk_message(parseInt(key));
+                            display_risk_message(parseInt(key),"legal");
                         }
                 }
                 if (sessionStorage.getItem("user_type") === "phys") {
@@ -35,14 +35,14 @@ function check_correct_answer(){
                             update_data_in_localstorage(parseInt(key), value, true);
                             element.style = "border-radius: 40px; height:50px; width:50px; color:#01010a;margin-right: 25px;border: 2.5px solid #209404;font-size: 25px;";
 
-                            hide_risk_message(parseInt(key));
+                            hide_risk_message(parseInt(key),"phys");
                         
                         // Если ответ неверный закрасить кружок красным и показать риск
                         } else {
                             element.style = "border-radius: 40px; height:50px; width:50px; color:#01010a;margin-right: 25px;border: 2.5px solid #e86b52;font-size: 25px;";
                             save_data_to_localstorage(parseInt(key));
 
-                            display_risk_message(parseInt(key));
+                            display_risk_message(parseInt(key),"phys");
                         }
                 }
             }

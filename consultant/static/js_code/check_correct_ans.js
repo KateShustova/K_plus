@@ -22,7 +22,7 @@ function check_correct_answer(){
 
                         // Если ответ неверный закрасить кружок красным и показать риск
                         } else {
-                            element.style = "border-radius: 40px; height:50px; width:50px; color:#01010a;margin-right: 25px;border: 2.5px solid #e86b52;font-size: 25px;";
+                            element.style = "border-radius: 40px; height:50px; width:50px; color:#01010a;margin-right: 25px;border: 2.5px solid #892222;font-size: 25px;";
                             save_data_to_localstorage(parseInt(key));
                             
                             display_risk_message(parseInt(key),"legal");
@@ -39,7 +39,7 @@ function check_correct_answer(){
                         
                         // Если ответ неверный закрасить кружок красным и показать риск
                         } else {
-                            element.style = "border-radius: 40px; height:50px; width:50px; color:#01010a;margin-right: 25px;border: 2.5px solid #e86b52;font-size: 25px;";
+                            element.style = "border-radius: 40px; height:50px; width:50px; color:#01010a;margin-right: 25px;border: 2.5px solid #892222;font-size: 25px;";
                             save_data_to_localstorage(parseInt(key));
 
                             display_risk_message(parseInt(key),"phys");

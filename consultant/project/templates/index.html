@@ -322,14 +322,14 @@
                <label>
                   <!-- Кнопка "Посмотреть риски" в тесте -->
                   <a href="#risk_page">
-                     <button  type="button" class="btn btn-lg btn-block btn-primary" style="border: 1.8px solid #00000 0;border-radius: 40px; padding-top: 7px; width: 170px; height: 75px; margin:0 auto; background-color:#f6f7f8;color:#800000;text-align: center;font-size: 21px;text-transform: unset !important;display: inline-block;">
+                     <button  type="button" class="btn btn-lg btn-block btn-primary" style="border: 1.8px solid #00000 0;border-radius: 40px;border-color: #413E3E; padding-top: 7px; width: 170px; height: 75px; margin:0 auto; background-color:#f6f7f8;color:#378922;text-align: center;font-size: 21px;text-transform: unset !important;display: inline-block;">
                         <strong>Посмотреть риски</strong>
                      </button>
                   </a>
                </label>
                <label style="margin-left: 50px;display: none;" id="btn_back">
                   <!-- Кнопка "Пройти заново" в тесте -->
-                  <button onclick="window.location.href='/#test_page';" id="btn_back_click" type="button" class="btn btn-lg btn-block btn-primary" style="border: 1.8px solid #000000;border-radius: 40px; padding-top: 7px; width: 170px; height: 75px; margin:0 auto; background-color:#f6f7f8;color:#800000;text-align: center;font-size: 21px;text-transform: unset !important;display: inline-block;">
+                  <button onclick="window.location.href='/#test_page';" id="btn_back_click" type="button" class="btn btn-lg btn-block btn-primary" style="border: 1.8px solid #000000;border-radius: 40px; padding-top: 7px; width: 170px; height: 75px; margin:0 auto; background-color:#f6f7f8;color:#378922;text-align: center;font-size: 21px;text-transform: unset !important;display: inline-block;">
                   <strong>Пройти заново</strong></button>
                   <script>
                      var btn = document.getElementById('btn_back_click');
@@ -349,7 +349,7 @@
             <!-- Отображение цифр в кружках на вопросах физиков-->
             <script id="withIframe-1" type="text/template">
                {% for employee in page_obj_phys %}
-                  <button id="numbers_{{forloop.counter}}" class="button-button" style="border-radius: 40px; border: 2.5px solid #E86B52; height:50px; width:50px; color:#800000;margin-right: 25px; font-size: 25px;">
+                  <button id="numbers_{{forloop.counter}}" class="button-button" style="border-radius: 40px; border: 2.5px solid #892222; height:50px; width:50px; color:#800000;margin-right: 25px; font-size: 25px;">
                      {{forloop.counter}}
                   </button>
                {% endfor %}
@@ -358,7 +358,7 @@
             <!-- Отображение цифр в кружках на вопросах юриков-->
             <script id="withIframe_l-1" type="text/template">
                {% for employee in page_obj_legal %}
-                  <button id="numbers_{{forloop.counter}}" class="button-button" style="border-radius: 40px; border: 2.5px solid #E86B52; height:50px; width:50px; color:#800000;margin-right: 25px; font-size: 25px;">
+                  <button id="numbers_{{forloop.counter}}" class="button-button" style="border-radius: 40px; border: 2.5px solid #892222; height:50px; width:50px; color:#800000;margin-right: 25px; font-size: 25px;">
                      {{forloop.counter}}
                   </button>
                {% endfor %}
@@ -432,16 +432,25 @@
          <!-- Заголовок страницы с рисками -->
          <div id = "risk_page">
 
-            <h1 id="high_risk_message_header" class="text-center"  style="padding-top: 80px; margin-top: -10px; margin-bottom: 80px; width: 80%; margin:0 auto; display:none;"><strong>Уровень риска: красный</strong>
+            <h1 id="high_risk_message_header" class="text-center"  style="padding-top: 80px; margin-top: -10px; margin-bottom: 80px; width: 80%; margin:0 auto; display:none;">
+               <strong>Уровень риска:</strong>
+               <strong style="color:#800000">красный</strong>
             </h1>
 
-            <h1 id="low_risk_message_header" class="text-center"  style="padding-top: 80px; margin-top: -10px; margin-bottom: 80px; width: 80%; margin:0 auto; display:none;"><strong>Уровень риска: желтый</strong>
+            <h1 id="low_risk_message_header" class="text-center"  style="padding-top: 80px; margin-top: -10px; margin-bottom: 80px; width: 80%; margin:0 auto; display:none;">
+               <strong>Уровень риска:</strong>
+               <strong style="color:#C88F22">желтый</strong>
+
             </h1>
 
-            <h1 id="no_risk_but_questions_left_message_header" class="text-center"  style="padding-top: 80px; margin-top: -10px; margin-bottom: 80px; width: 80%; margin:0 auto;"><strong>Пока рисков нет. Пройдите тест, чтобы узнать результат</strong>
+            <h1 id="no_risk_but_questions_left_message_header" class="text-center"  style="padding-top: 80px; margin-top: -10px; margin-bottom: 80px; width: 80%; margin:0 auto;">
+               <strong style="color:#378922">Пока рисков нет</strong>
+               <p style="color:#413E3E;font-size: 65%;">Пройдите тест, чтобы узнать результат</p>
+               
             </h1>
 
-            <h1 id="no_risk_test_finished_message_header" class="text-center"  style="padding-top: 80px; margin-top: -10px; margin-bottom: 80px; width: 80%; margin:0 auto; display:none;"><strong>Рисков не найдено. Отличная сделка!</strong>
+            <h1 id="no_risk_test_finished_message_header" class="text-center"  style="padding-top: 80px; margin-top: -10px; margin-bottom: 80px; width: 80%; margin:0 auto; display:none;">
+               <strong style="color:#378922">Рисков не найдено. Отличная сделка!</strong>
             </h1>
 
             <!-- Вывод рисков для физиков -->
@@ -450,7 +459,7 @@
                <div class="cont-ref d-flex justify-content-center" width="100%">
                   <div class="container" style="padding-top:20px">
                      {% for question in page_obj_phys %}
-                        <div id="risk_message_phys_{{forloop.counter}}" style="border-radius: 30px; padding:10px; margin:20px;width:90%; background-color:#FFFFFF; border: 2.5px solid #e86b52;font-size:12px;text-align: center; display:none">
+                        <div id="risk_message_phys_{{forloop.counter}}" style="border-radius: 30px; padding:10px; margin:20px;width:90%; background-color:#FFFFFF; border: 2.5px solid #892222;font-size:12px;text-align: center; display:none">
                            <span style="font-size: 160%; padding-left:10px;padding-right:10px">Вопрос {{question.id }} : {{ question.risk |safe }}</span>
                         </div>
                      {% endfor %}
@@ -464,7 +473,7 @@
                <div class="cont-ref d-flex justify-content-center" width="100%">
                   <div class="container" style="padding-top:20px">
                      {% for question in page_obj_legal %}
-                        <div id="risk_message_legal_{{forloop.counter}}" style="border-radius: 30px; padding:10px; margin:20px;width:90%; background-color:#FFFFFF; border: 2.5px solid #e86b52;font-size:12px;text-align: center; display:none">
+                        <div id="risk_message_legal_{{forloop.counter}}" style="border-radius: 30px; padding:10px; margin:20px;width:90%; background-color:#FFFFFF; border: 2.5px solid #892222;font-size:12px;text-align: center; display:none">
                            <span style="font-size: 160%; padding-left:10px;padding-right:10px">Вопрос {{question.id }} : {{ question.risk |safe }}</span>
                         </div>
                      {% endfor %}

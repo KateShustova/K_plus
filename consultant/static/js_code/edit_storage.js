@@ -9,6 +9,7 @@ function save_data_to_localstorage(number) {
     if (index == -1) {
         current.push(number);
     }
+    current.sort((a, b) => String(a).localeCompare(String(b), undefined, { numeric: true }));
     sessionStorage.setItem('risks', JSON.stringify(current));
     sessionStorage.removeItem(number);
     console.log(sessionStorage);
@@ -26,6 +27,7 @@ function update_data_in_localstorage(id, value, flg) {
             current.splice(index, 1);
         }
     }
+    current.sort((a, b) => String(a).localeCompare(String(b), undefined, { numeric: true }));
     sessionStorage.setItem('risks', JSON.stringify(current));
     console.log(sessionStorage);
 }

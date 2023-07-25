@@ -11,13 +11,13 @@ function check() {
         }
         var ln = JSON.parse(sessionStorage.getItem("risks")).length;
         if(ln >= 2 && ln <= 4){
-            var txt = "У вас " + ln + " риска \n Перейдите на вопросы " + str.substring(0, str.length - 2);
+            var txt = "У вас " + ln + " риска \n Обратите внимание на вопросы " + str.substring(0, str.length - 2);
         }
         else if (ln === 1){
-            var txt = "У вас " + ln + " риск \n Перейдите на вопрос " + str.substring(0, str.length - 2);
+            var txt = "У вас " + ln + " риск \n Обратите внимание на вопрос " + str.substring(0, str.length - 2);
         }
         else{
-            var txt = "У вас " + ln + " рисков \n Перейдите на вопросы " + str.substring(0, str.length - 2);
+            var txt = "У вас " + ln + " рисков \n Обратите внимание на вопросы " + str.substring(0, str.length - 2);
         }
         span.innerText = txt;
     }

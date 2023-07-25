@@ -3,6 +3,9 @@ function update(num_, div_num, value) {
     if (sessionStorage.getItem("user_type") == "phys"){
         if (sessionStorage.getItem("now") == "21"){
             document.getElementById("d-q-ans-container-last").style.display = "block";
+            if (value === 0){
+                document.getElementById("check_risk").click();
+            }
         }
         else{
             document.getElementById("d-q-ans-container-last").style.display = "none";
@@ -11,6 +14,9 @@ function update(num_, div_num, value) {
     else{
         if (sessionStorage.getItem("now") == "18"){
             document.getElementById("d-q-ans-container-last").style.display = "block";
+            if (value === 0){
+                document.getElementById("check_risk").click();
+            }
         }
         else{
             document.getElementById("d-q-ans-container-last").style.display = "none";
@@ -66,13 +72,17 @@ function pagination_button(event, index) {
         save_data_to_localstorage(index);
     }
 
-    update(num_, div_num);
+    update(num_, div_num, 0);
     check_correct_answer();
     update_risk_header();
 
     var t = num_ + 1;
-    var element = document.getElementById("numbers_" + t);
-    element.style.backgroundColor = "#808083";
+    try{
+        var element = document.getElementById("numbers_" + t);
+        element.style.backgroundColor = "#808083";
+    }
+    catch (e){
+    }
 }
 
 
@@ -99,7 +109,7 @@ function pagination(event) {
         save_data_to_localstorage(current);
     }
 
-    update(num_, div_num);
+    update(num_, div_num, 1);
     check_correct_answer();
     var t = num_ + 1;
     var element = document.getElementById("numbers_" + t);

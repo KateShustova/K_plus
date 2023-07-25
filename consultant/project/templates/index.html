@@ -337,7 +337,7 @@
                <label>
                   <!-- Кнопка "Посмотреть риски" в тесте -->
                   <a href="#risk_page">
-                     <button  type="button" class="btn btn-lg btn-block btn-primary" style="border: 1.8px solid #00000 0;border-radius: 40px;border-color: #413E3E; padding-top: 7px; width: 170px; height: 75px; margin:0 auto; background-color:#f6f7f8;color:#378922;text-align: center;font-size: 21px;text-transform: unset !important;display: inline-block;">
+                     <button id="check_risk"  type="button" class="btn btn-lg btn-block btn-primary" style="border: 1.8px solid #00000 0;border-radius: 40px;border-color: #413E3E; padding-top: 7px; width: 170px; height: 75px; margin:0 auto; background-color:#f6f7f8;color:#378922;text-align: center;font-size: 21px;text-transform: unset !important;display: inline-block;">
                         <strong>Посмотреть риски</strong>
                      </button>
                   </a>
@@ -350,8 +350,17 @@
                      var btn = document.getElementById('btn_back_click');
                      btn.onclick = function(event) {
                         location.href = "/#test_page";
-                     window.location.reload();
-                     sessionStorage.clear();
+                        window.location.reload();
+                        sessionStorage.clear();
+                        var risk_legal_num = document.querySelectorAll(".risks_legal_text");
+                        var risk_phys_num = document.querySelectorAll(".risks_phys_text");
+                        for (let i = 0; i < risk_legal_num.length; i++) {
+                                risk_legal_num[i].style.display = "none";
+                          }
+
+                          for (let i = 0; i < risk_phys_num.length; i++) {
+                                risk_phys_num[i].style.display = "none";
+                          }
                      };
                   </script>
                </label>
@@ -382,6 +391,7 @@
             <!-- Обработчик клика на кнопки теста-->
             <script>
                function foo(id){
+                  document.getElementById("check_risk").style.display = "inline-block";
                   var div = document.getElementById('d-q-ans-container_' + id);
                   var button_yes = document.getElementById('t_ans_35636_' + id);
                   var button_no = document.getElementById('t_ans_35637_' + id);
@@ -409,6 +419,20 @@
                var button_legal = document.getElementById('t_ans_35637_0');
 
                button_phys.onclick = function(event){
+                  document.getElementById("check_risk").style.display = "inline-block";
+                  if (sessionStorage.getItem("user_type") !== "phys"){
+                     var risk_legal_num = document.querySelectorAll(".risks_legal_text");
+                     for (let i = 0; i < risk_legal_num.length; i++) {
+                       risk_legal_num[i].style.display = "none";
+                     }
+                  }
+                  else{
+                     for (var element of JSON.parse(sessionStorage.getItem("risks"))) {
+                        display_risk_message(parseInt(element),"phys");
+                     }
+                     update_risk_header();
+                  }
+
                   update_user_type("phys");
                   sessionStorage.setItem("user_type", "phys");
                   document.getElementById('d-q-ans-container_0').style.display = 'none';
@@ -425,7 +449,20 @@
                   };
 
                button_legal.onclick = function(event) {
-                     update_user_type("legal");
+                  document.getElementById("check_risk").style.display = "inline-block";
+                  if (sessionStorage.getItem("user_type") !== "legal"){
+                     var risk_phys_num = document.querySelectorAll(".risks_phys_text");
+                     for (let i = 0; i < risk_phys_num.length; i++) {
+                       risk_phys_num[i].style.display = "none";
+                     }
+                  }
+                  else{
+                     for (var element of JSON.parse(sessionStorage.getItem("risks"))) {
+                        display_risk_message(parseInt(element),"legal");
+                     }
+                     update_risk_header();
+                  }
+                  update_user_type("legal");
                   document.getElementById('d-q-ans-container_0').style.display = 'none';
                   document.getElementById('btn_back').style = "margin-left: 50px;";
                   document.getElementById("qcont").innerHTML = document.getElementById("withIframe_l").innerHTML;
@@ -473,7 +510,7 @@
                <div class="cont-ref d-flex justify-content-center" width="100%">
                   <div class="container" style="padding-top:20px">
                      {% for question in page_obj_phys %}
-                        <div id="risk_message_phys_{{forloop.counter}}" style="border-radius: 30px; padding:10px; margin:20px;width:90%; background-color:#FFFFFF; border: 2.5px solid #892222;font-size:12px;text-align: center; display:none">
+                        <div id="risk_message_phys_{{forloop.counter}}" style="border-radius: 30px; padding:10px; margin:20px;width:90%; background-color:#FFFFFF; border: 2.5px solid #892222;font-size:12px;text-align: center; display:none" class="risks_phys_text" >
                            <span style="font-size: 160%; padding-left:10px;padding-right:10px">Вопрос {{question.id }} : {{ question.risk |safe }}</span>
 
                            <script>
@@ -490,6 +527,25 @@
                </div>
             </div>
 
+            <script>
+               window.onload = function() {
+                  document.getElementById("check_risk").style.display = "none";
+                 document.getElementById("high_risk_message_header").style.display = "none";
+                  document.getElementById("low_risk_message_header").style.display = "none";
+                  document.getElementById("no_risk_but_questions_left_message_header").style.display = "block";
+
+                  var risk_legal_num = document.querySelectorAll(".risks_legal_text");
+                     for (let i = 0; i < risk_legal_num.length; i++) {
+                       risk_legal_num[i].style.display = "none";
+                     }
+
+                  var risk_phys_num = document.querySelectorAll(".risks_phys_text");
+                     for (let i = 0; i < risk_phys_num.length; i++) {
+                       risk_phys_num[i].style.display = "none";
+                     }
+               };
+            </script>
+
 
             <!-- Инициализация рисков для юриков -->
 
@@ -497,7 +553,7 @@
                <div class="cont-ref d-flex justify-content-center" width="100%">
                   <div class="container" style="padding-top:20px">
                      {% for question in page_obj_legal %}
-                        <div id="risk_message_legal_{{forloop.counter}}" style="border-radius: 30px; padding:10px; margin:20px;width:90%; background-color:#FFFFFF; border: 2.5px solid #892222;font-size:12px;text-align: center; display:none">
+                        <div id="risk_message_legal_{{forloop.counter}}" style="border-radius: 30px; padding:10px; margin:20px;width:90%; background-color:#FFFFFF; border: 2.5px solid #892222;font-size:12px;text-align: center; display:none" class="risks_legal_text">
                            <span style="font-size: 160%; padding-left:10px;padding-right:10px">Вопрос {{question.id }} : {{ question.risk |safe }}</span>
 
                            <script>

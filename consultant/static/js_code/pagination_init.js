@@ -15,7 +15,13 @@ function pagination_init(cnt, qc) {
 
         // раскраска номеров вопросов
         element = document.getElementById("numbers_" + i);
-        element.disabled = true;
+        if ((!sessionStorage.getItem(i) && set.has(i)) ||  sessionStorage.getItem(i)) {
+            if (set.has(i)) {
+                element.disabled = false;
+            }
+        } else {
+            element.disabled = true;
+        }
         if (!sessionStorage.getItem(i)) {
             if (set.has(i)) {
                 element.style = "border-radius: 40px; height:50px; width:50px; color:#01010a;margin-right: 25px;border: 2.5px solid #892222;font-size: 25px;";

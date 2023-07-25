@@ -16,6 +16,10 @@ function check() {
         else if (ln === 1){
             var txt = "У вас " + ln + " риск \n Обратите внимание на вопрос " + str.substring(0, str.length - 2);
         }
+        else if (ln >= 5){
+            var txt = "У вас " + ln + " рисков \n Обратите внимание на вопросы"
+                        + str.split(', ').slice(0, 5).map(i => " " + i).join() + " и другие";
+        }
         else{
             var txt = "У вас " + ln + " рисков \n Обратите внимание на вопросы " + str.substring(0, str.length - 2);
         }

@@ -9,9 +9,6 @@ function check_correct_answer(){
             if (!isNaN(parseInt(key))){
                 var element = document.getElementById("numbers_" + key);
                 if (sessionStorage.getItem("user_type") === "legal") {
-                        //console.log("legal");
-                        //console.log(key);
-                        //console.log(value);
                         // Если ответ верный закрасить кружок зеленым и спрятать риск 
                         if (array_values[parseInt(key)-1] == value) {
 

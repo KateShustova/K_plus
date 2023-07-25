@@ -1,6 +1,5 @@
 function update(num_, div_num, value) {
-    console.log("sessionStorage");
-    console.log(sessionStorage);
+    //console.log("sessionStorage");
     if (sessionStorage.getItem("user_type") == "phys"){
         if (sessionStorage.getItem("now") == "21"){
             document.getElementById("d-q-ans-container-last").style.display = "block";
@@ -46,11 +45,17 @@ function update(num_, div_num, value) {
     }
 //    check_correct_answer();
 }
-//#413E3E - blue
-//#01010a - black
-//#800000 - dark red
-//#892222 - bright red
-//#808083 - gray
+
+/* 
+Color palette
+-------------------
+Серый - 413E3E
+Зеленый - 378922
+Красный - 892222
+Желтый - C88F22
+-------------------
+*/
+
 
 function pagination_button(event, index) {
     var num_ = index;
@@ -60,8 +65,11 @@ function pagination_button(event, index) {
     if (!current) {
         save_data_to_localstorage(index);
     }
+
     update(num_, div_num);
     check_correct_answer();
+    update_risk_header();
+
     var t = num_ + 1;
     var element = document.getElementById("numbers_" + t);
     element.style.backgroundColor = "#808083";
@@ -70,6 +78,9 @@ function pagination_button(event, index) {
 
 
 function pagination(event) {
+
+    var current = sessionStorage.getItem("now")
+    var user_type = sessionStorage.getItem("user_type")
     var div_num = document.querySelectorAll(".num");
     var e = event || window.event;
     var target = e.target;
@@ -77,11 +88,11 @@ function pagination(event) {
 
     var num_ = parseInt(id.substr(8)) - 1;
 
-    if (!sessionStorage.getItem("now")) {
+    if (!current) {
         sessionStorage.setItem('now', 1);
-        var current = parseInt(sessionStorage.getItem("now"));
+        var current = parseInt(current);
     } else {
-        var current = parseInt(sessionStorage.getItem("now"));
+        var current = parseInt(current);
     }
 
     if (!sessionStorage.getItem(current)) {
@@ -93,5 +104,7 @@ function pagination(event) {
     var t = num_ + 1;
     var element = document.getElementById("numbers_" + t);
     element.style.backgroundColor = "#808083";
+
+    display_risk_message(parseInt(current),user_type)
 };
 

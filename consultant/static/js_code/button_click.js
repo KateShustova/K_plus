@@ -5,11 +5,7 @@ function btn_click_mark(element, id, value) {
         
         update_data_in_localstorage(id, value, false);
         pagination_button(event, id, value);
-        check();
-
-        update_risk_header();
-        
-        
+        check();  
     };
 };
 
@@ -23,7 +19,5 @@ function btn_click(element, id) {
         save_data_to_localstorage(id);
         pagination_button(event, id);
         check();
-        
-        update_risk_header();
     };
 };

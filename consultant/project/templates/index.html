@@ -475,6 +475,15 @@
                      {% for question in page_obj_phys %}
                         <div id="risk_message_phys_{{forloop.counter}}" style="border-radius: 30px; padding:10px; margin:20px;width:90%; background-color:#FFFFFF; border: 2.5px solid #892222;font-size:12px;text-align: center; display:none">
                            <span style="font-size: 160%; padding-left:10px;padding-right:10px">Вопрос {{question.id }} : {{ question.risk |safe }}</span>
+
+                           <script>
+                              // 1 == красный риск
+                              // 0 == желтый риск
+
+                              if( {{ question.risk_level }} == 0){
+                                 document.getElementById("risk_message_phys_{{forloop.counter}}").style.border = (" 2.5px solid #C88F22")
+                              }
+                           </script>
                         </div>
                      {% endfor %}
                   </div>
@@ -490,6 +499,16 @@
                      {% for question in page_obj_legal %}
                         <div id="risk_message_legal_{{forloop.counter}}" style="border-radius: 30px; padding:10px; margin:20px;width:90%; background-color:#FFFFFF; border: 2.5px solid #892222;font-size:12px;text-align: center; display:none">
                            <span style="font-size: 160%; padding-left:10px;padding-right:10px">Вопрос {{question.id }} : {{ question.risk |safe }}</span>
+
+                           <script>
+                              // 1 == красный риск
+                              // 0 == желтый риск
+
+                              if( {{ question.risk_level }} == 0){
+                                 document.getElementById("risk_message_legal_{{forloop.counter}}").style.border = (" 2.5px solid #C88F22")
+                              }
+                           </script>
+
                         </div>
                      {% endfor %}
                   </div>

@@ -209,18 +209,33 @@
             {% endfor %}
          </script>
 
+         <!-- Заполнение sessionStorage -->
          <script>
             let arr = [];
-            {% for employee in page_obj_phys %}
-               arr.push({{employee.correct_answer}});
+            {% for question in page_obj_phys %}
+               arr.push({{question.correct_answer}});
             {% endfor %}
             sessionStorage.setItem("phys", arr);
 
             let arr1 = [];
-            {% for employee in page_obj_legal %}
-               arr1.push({{employee.correct_answer}});
+            {% for question in page_obj_legal %}
+               arr1.push({{question.correct_answer}});
             {% endfor %}
             sessionStorage.setItem("legal", arr1);
+
+            let risk_level_phys_arr = [];
+            {% for question in page_obj_phys %}
+               risk_level_phys_arr.push({{question.risk_level}});
+            {% endfor %}
+            sessionStorage.setItem("risk_level_phys", risk_level_phys_arr);
+
+            let risk_level_legal_arr = [];
+            {% for question in page_obj_phys %}
+               risk_level_legal_arr.push({{question.risk_level}});
+            {% endfor %}
+            sessionStorage.setItem("risk_level_legal", risk_level_legal_arr);
+
+            console.log(sessionStorage)
          </script>
 
 

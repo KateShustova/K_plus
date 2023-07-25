@@ -33,13 +33,16 @@ function update_risk_header(){
         document.getElementById(header_id_list[i]).style.display = 'none';
     }
 
+    var user_type = sessionStorage.getItem("user_type")
+    var risk_list = JSON.parse(sessionStorage.getItem("risks"));
+    var risk_level_phys_list = JSON.parse("[" + sessionStorage.getItem("risk_level_phys") + "]");
+    var risk_level_legal_list = JSON.parse("[" + sessionStorage.getItem("risk_level_legal") + "]");
     // Показать нужный заголовок 
 
-
+    // если массив с рисками создан
     if (sessionStorage.getItem("risks")){
         // Если рисков нет
-        if(JSON.parse(sessionStorage.getItem("risks")).length == 0 )
-        //|| document.getElementById("d-q-ans-container_0") !== null)
+        if(risk_list.length == 0 )
         {
             // Если физик
             if (sessionStorage.getItem("user_type") == "phys"){
@@ -65,10 +68,33 @@ function update_risk_header(){
         }
         // Если риски есть
         else{
-            console.log("show high_risk_message_header")
-            document.getElementById('high_risk_message_header').style.display = 'block';
+            if(user_type == "phys"){
+                for(var i = 0; i<risk_list.length; i++){
+                    if(risk_level_phys_list[risk_list[i]-1]===1){
+                        console.log("show high_risk_message_header")
+                        document.getElementById('high_risk_message_header').style.display = 'block';
+                        return null;
+                    }
+                }
+                console.log("show low_risk_message_header")
+                document.getElementById('low_risk_message_header').style.display = 'block';
+                return null;
+            }
+            else{
+                if(user_type == "legal"){
+                    for(var i = 0; i<risk_list.length; i++){
+                        if(risk_level_legal_list[risk_list[i]-1]===1){
+                            console.log("show high_risk_message_header")
+                            document.getElementById('high_risk_message_header').style.display = 'block';
+                            return null;
+                        }
+                    }
+                    console.log("show low_risk_message_header")
+                    document.getElementById('low_risk_message_header').style.display = 'block';
+                    return null;
+                }   
+            }
         }
-        
     }
     else{
         console.log("show no_risk_but_questions_left_message_header")

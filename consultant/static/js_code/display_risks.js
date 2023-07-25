@@ -34,31 +34,46 @@ function update_risk_header(){
     }
 
     // Показать нужный заголовок 
-    // Если рисков нет
-    if (sessionStorage.getItem("risks") === null 
-        || JSON.parse(sessionStorage.getItem("risks")).length == 0 
-        || document.getElementById("d-q-ans-container_0") !== null){
-        
-        // Если вопросы закончились
-        if (sessionStorage.getItem("user_type") == "phys"){
-            if (sessionStorage.getItem("now") == "21"){
-                console.log("show no_risk_test_finished_message_header")
-                document.getElementById('no_risk_test_finished_message_header').style.display = 'block';
-                return null;
+
+
+    if (sessionStorage.getItem("risks")){
+        // Если рисков нет
+        if(JSON.parse(sessionStorage.getItem("risks")).length == 0 )
+        //|| document.getElementById("d-q-ans-container_0") !== null)
+        {
+            // Если физик
+            if (sessionStorage.getItem("user_type") == "phys"){
+                // Если вопросы закончились
+                if (sessionStorage.getItem("now") == "21"){
+                    console.log("show no_risk_test_finished_message_header")
+                    document.getElementById('no_risk_test_finished_message_header').style.display = 'block';
+                    return null;
+                }
             }
+            // Если юрик
+            else{
+                // Если вопросы закончились
+                if (sessionStorage.getItem("now") == "18"){
+                    console.log("show no_risk_test_finished_message_header")
+                    document.getElementById('no_risk_test_finished_message_header').style.display = 'block';
+                    return null;
+                }
+            }
+
+            console.log("show no_risk_but_questions_left_message_header")
+            document.getElementById('no_risk_but_questions_left_message_header').style.display = 'block';
         }
+        // Если риски есть
         else{
-            if (sessionStorage.getItem("now") == "18"){
-                console.log("show no_risk_test_finished_message_header")
-                document.getElementById('no_risk_test_finished_message_header').style.display = 'block';
-                return null;
-            }
+            console.log("show high_risk_message_header")
+            document.getElementById('high_risk_message_header').style.display = 'block';
         }
+        
+    }
+    else{
         console.log("show no_risk_but_questions_left_message_header")
         document.getElementById('no_risk_but_questions_left_message_header').style.display = 'block';
     }
-    else{
-        console.log("show high_risk_message_header")
-        document.getElementById('high_risk_message_header').style.display = 'block';
-    }
+    
+    
 }

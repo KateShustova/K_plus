@@ -388,7 +388,6 @@
             <script src="{% static 'js_code/check_correct_ans.js' %}"> </script>
             <script src="{% static 'js_code/display_risks.js' %}"> </script>
 
-
             <!-- Обработчик клика на кнопки вопроса юр/физ-->
             <script>
                var button_phys = document.getElementById('t_ans_35636_0');
@@ -429,7 +428,7 @@
 
          <br><br>
 
-         <!-- Заголовок страницы с рисками -->
+         <!-- Инициализация заголовков страницы с рисками -->
          <div id = "risk_page">
 
             <h1 id="high_risk_message_header" class="text-center"  style="padding-top: 80px; margin-top: -10px; margin-bottom: 80px; width: 80%; margin:0 auto; display:none;">
@@ -443,7 +442,7 @@
 
             </h1>
 
-            <h1 id="no_risk_but_questions_left_message_header" class="text-center"  style="padding-top: 80px; margin-top: -10px; margin-bottom: 80px; width: 80%; margin:0 auto;">
+            <h1 id="no_risk_but_questions_left_message_header" class="text-center"  style="padding-top: 80px; margin-top: -10px; margin-bottom: 80px; width: 80%; margin:0 auto; display:none;">
                <strong style="color:#378922">Пока рисков нет</strong>
                <p style="color:#413E3E;font-size: 65%;">Пройдите тест, чтобы узнать результат</p>
                
@@ -453,7 +452,7 @@
                <strong style="color:#378922">Рисков не найдено. Отличная сделка!</strong>
             </h1>
 
-            <!-- Вывод рисков для физиков -->
+            <!-- Инициализация рисков для физиков -->
             
             <div style="height:fit-content">
                <div class="cont-ref d-flex justify-content-center" width="100%">
@@ -467,7 +466,8 @@
                </div>
             </div>
 
-            <!-- Вывод рисков для юриков -->
+
+            <!-- Инициализация рисков для юриков -->
 
             <div style="height:fit-content">
                <div class="cont-ref d-flex justify-content-center" width="100%">
@@ -482,6 +482,20 @@
             </div>
 
          </div>
+
+          <!-- Отображение заголовка-->
+          <script>
+            update_risk_header();
+         </script>
+
+          <!-- Отображение сообщений о рисках-->
+          <script>
+            var risk_list = JSON.parse(sessionStorage.getItem("risks"))
+            var user_type = sessionStorage.getItem("user_type")
+            for (var i = 0; i < risk_list.length; i++){
+               display_risk_message(risk_list[i],user_type);
+            };
+         </script>
    </div>
       <style>
          .footer {

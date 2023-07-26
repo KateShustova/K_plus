@@ -385,7 +385,7 @@
                display: block;
                }
             </style>
-            <div style="text-align: center; padding-right: 1.8%;">
+            <div style="text-align: center; padding-right: 2%;">
                <!-- Ряд кнопок  -->
                <label>
                   <!-- Кнопка "Посмотреть риски" в тесте -->
@@ -397,7 +397,7 @@
                </label>
                <label style="display: none;" id="btn_back">
                   <!-- Кнопка "Пройти заново" в тесте -->
-                  <button onclick="window.location.href='/#test_page';" id="btn_back_click" type="button" class="btn btn-lg btn-block btn-primary" style="border: 1.8px solid #00000;border-radius: 40px;border-color: #413E3E; padding-top: 7px; width: 95%; background-color:#f6f7f8;color:#378922;text-align: center;font-size: 1.1vw;text-transform: unset !important;display: inline-block;">
+                  <button onclick="window.location.href='/#test_page';" id="btn_back_click" type="button" class="btn btn-lg btn-block btn-primary" style="border: 1.8px solid #00000;border-radius: 40px;border-color: #413E3E; padding-top: 7px; width: 80%; background-color:#f6f7f8;color:#378922;text-align: center;font-size: 1.1vw;text-transform: unset !important;display: inline-block;">
                   <strong>Пройти заново</strong></button>
                   <script>
                      var btn = document.getElementById('btn_back_click');
@@ -506,10 +506,12 @@
                      }
                   }
                   else{
-                     for (var element of JSON.parse(sessionStorage.getItem("risks"))) {
-                        display_risk_message(parseInt(element),"phys");
+                     if (sessionStorage.getItem("risks")){
+                        for (var element of JSON.parse(sessionStorage.getItem("risks"))) {
+                           display_risk_message(parseInt(element),"phys");
+                        }
+                        update_risk_header();
                      }
-                     update_risk_header();
                   }
 
                   update_user_type("phys");

@@ -162,6 +162,17 @@
          [data-tooltip] {
          position: relative;
          }
+         [data-tooltip].tooltipshow {
+            position: relative;
+         }
+         [data-tooltip].tooltipshow::after{
+            left: 0; top: 0;
+            pointer-events: none;
+            opacity:1 !important;
+            visibility: visible !important;
+            top: 2em;
+            pointer-events: auto;
+         }
          [data-tooltip]::after {
          content: attr(data-tooltip);
          position: absolute;
@@ -181,34 +192,21 @@
          opacity: 1;
          top: 2em;
          }
-         [data-tooltip]:active::after {
-            visibility: visible;
-            display: block;
-            pointer-events: auto;
-            color:red;
-            {% comment %} opacity:1; {% endcomment %}
-            top: 2em;
-          }
-          [data-tooltip]{
-            opacity:1 !important;
-            color: #0000ff !important;
-            visibility: visible !important;
-          }
          </style>
-
+         
          <script>
-            var tooltip = document.querySelector('.mytooltip')
-            console.log(tooltip)
-            tooltip.addEventListener('click', function() {
-            if (this.classList.contains('active')) {
-               this.classList.remove('active');
-            } else {
-               this.classList.add('active');
-               console.log("fuck")
-            }
             
-            });
+
+            var myFunction = function(obj) {
+               if (obj.classList.contains('tooltipshow')) {
+                  obj.classList.remove('tooltipshow');
+               } else {
+                  obj.classList.add('tooltipshow');
+               } 
+            };
          </script>
+         
+
 
          <script id="withIframe" type="text/template">
             <div id="d-q-ans-container-last" style="border-radius: 60px; padding-top: 50px; width: 800px; height: 300px; margin:0 auto; background-color:#FFFFFF;text-align: center;display: none">
@@ -231,7 +229,7 @@
                   </div>
 
                <div style="position: absolute; top: 20px; left: 90%">
-                  <p class="tooltipshow" data-tooltip="{{ employee.info }}"><img align="right" style="margin-right:10px;" src="{% static 'img\question.png' %}"></p>
+                  <p class="mytooltip" onclick="myFunction(this);" data-tooltip="{{ employee.info |safe }}"><img align="right" style="margin-right:10px;" src="{% static 'img\question.png' %}"></p>
                </div>
 
                <div style="position: absolute; bottom: 0; left: 25%">
@@ -311,7 +309,7 @@
                         </div>
 
                   <div style="position: absolute; top: 20px; left: 90%">
-                     <p data-tooltip="{{ employee.info }}"><img align="right" style="margin-right:10px;" src="{% static 'img\question.png' %}"></p>
+                     <p class="mytooltip" onclick="myFunction(this);" data-tooltip="{{ employee.info |safe }}"><img align="right" style="margin-right:10px;" src="{% static 'img\question.png' %}"></p>
                   </div>
 
                      <div style="position: absolute; bottom: 0; left: 25%">

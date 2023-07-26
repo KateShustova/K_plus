@@ -158,6 +158,35 @@
             });
          </script>
 
+         <style>
+         [data-tooltip] {
+         position: relative; 
+         }
+         [data-tooltip]::after {
+         content: attr(data-tooltip);
+         position: absolute;
+         width: 300px;
+         left: 0; top: 0;
+         background: #f0f0f0;
+         color: #202020;
+         border-radius: 10px;
+         padding: 0.5em;
+         box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+         pointer-events: none;
+         opacity: 0;
+         transition: 0.5s;
+         } 
+         [data-tooltip]:hover::after {
+         opacity: 1;
+         top: 2em;
+         }
+         [data-tooltip]:focus::after {
+         opacity:1;
+         visibility: visible;
+         color:#ff0000;
+         }
+         </style>
+
          <script id="withIframe" type="text/template">
             <div id="d-q-ans-container-last" style="border-radius: 60px; padding-top: 50px; width: 800px; height: 300px; margin:0 auto; background-color:#FFFFFF;text-align: center;display: none">
                <div style="position: relative; top: 50%; transform: translateY(-60%);">
@@ -179,7 +208,7 @@
                   </div>
 
                <div style="position: absolute; top: 20px; left: 90%">
-               <img align="right" style="margin-right:10px;" title="{{ employee.info }}" src="{% static 'img\question.png' %}">
+               <p data-tooltip="{{ employee.info }}"><img align="right" style="margin-right:10px;" src="{% static 'img\question.png' %}"></p>
                   </div>
 
                <div style="position: absolute; bottom: 0; left: 25%">
@@ -258,9 +287,9 @@
                   <h1 class="qtext_{{forloop.counter}}" id="mydiv" style="margin-bottom: 30px; color: #008000;" ><strong>Вопрос № {{forloop.counter}}</strong></h1>
                         </div>
 
-                     <div style="position: absolute; top: 20px; left: 90%">
-                     <img align="right" style="margin-right:10px" title="{{ employee.info }}" src="{% static 'img\question.png' %}">
-                        </div>
+                  <div style="position: absolute; top: 20px; left: 90%">
+                     <p data-tooltip="{{ employee.info }}"><img align="right" style="margin-right:10px;" src="{% static 'img\question.png' %}"></p>
+                  </div>
 
                      <div style="position: absolute; bottom: 0; left: 25%">
                   <div style="position: relative; top: 50%; transform: translateY(0%);">
@@ -478,7 +507,7 @@
             </script>
          </div>
 
-         <br><br>
+         <br>
 
          <!-- Инициализация заголовков страницы с рисками -->
          <div id = "risk_page">
@@ -510,7 +539,7 @@
                <div class="cont-ref d-flex justify-content-center" width="100%">
                   <div class="container" style="padding-top:20px">
                      {% for question in page_obj_phys %}
-                        <div id="risk_message_phys_{{forloop.counter}}" style="border-radius: 30px; padding:10px; margin:20px;width:90%; background-color:#FFFFFF; border: 2.5px solid #892222;font-size:12px;text-align: center; display:none" class="risks_phys_text" >
+                        <div id="risk_message_phys_{{forloop.counter}}" style="border-radius: 30px; padding:10px; margin:20px;width:90%; background-color:#FFFFFF; border: 4.5px solid #892222;font-size:12px;text-align: center; display:none" class="risks_phys_text" >
                            <span style="font-size: 160%; padding-left:10px;padding-right:10px">Вопрос {{question.id }} : {{ question.risk |safe }}</span>
 
                            <script>
@@ -518,7 +547,7 @@
                               // 0 == желтый риск
 
                               if( {{ question.risk_level }} == 0){
-                                 document.getElementById("risk_message_phys_{{forloop.counter}}").style.border = (" 2.5px solid #C88F22")
+                                 document.getElementById("risk_message_phys_{{forloop.counter}}").style.border = (" 4.5px solid #C88F22")
                               }
                            </script>
                         </div>
@@ -553,7 +582,7 @@
                <div class="cont-ref d-flex justify-content-center" width="100%">
                   <div class="container" style="padding-top:20px">
                      {% for question in page_obj_legal %}
-                        <div id="risk_message_legal_{{forloop.counter}}" style="border-radius: 30px; padding:10px; margin:20px;width:90%; background-color:#FFFFFF; border: 2.5px solid #892222;font-size:12px;text-align: center; display:none" class="risks_legal_text">
+                        <div id="risk_message_legal_{{forloop.counter}}" style="border-radius: 30px; padding:10px; margin:20px;width:90%; background-color:#FFFFFF; border: 4.5px solid #892222;font-size:12px;text-align: center; display:none" class="risks_legal_text">
                            <span style="font-size: 160%; padding-left:10px;padding-right:10px">Вопрос {{question.id }} : {{ question.risk |safe }}</span>
 
                            <script>
@@ -561,7 +590,7 @@
                               // 0 == желтый риск
 
                               if( {{ question.risk_level }} == 0){
-                                 document.getElementById("risk_message_legal_{{forloop.counter}}").style.border = (" 2.5px solid #C88F22")
+                                 document.getElementById("risk_message_legal_{{forloop.counter}}").style.border = (" 4.5px solid #C88F22")
                               }
                            </script>
 

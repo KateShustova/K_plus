@@ -563,8 +563,8 @@
                <div class="cont-ref d-flex justify-content-center" width="100%">
                   <div class="container" style="padding-top:20px">
                      {% for question in page_obj_phys %}
-                        <div id="risk_message_phys_{{forloop.counter}}" style="border-radius: 30px; padding:10px; margin:20px;width:90%; background-color:#FFFFFF; border: 4.5px solid #892222;font-size:12px;text-align: center; display:none" class="risks_phys_text" >
-                           <span style="font-size: 160%; padding-left:10px;padding-right:10px"><strong>Вопрос №{{question.id }} </strong> <br> {{ question.risk |safe }}</span>
+                        <div id="risk_message_phys_{{forloop.counter}}" style="border-radius: 30px; padding:10px; margin:20px;width:90%; background-color:#FFFFFF; border: 4.5px solid #892222;font-size:12px;text-align: left; display:none" class="risks_phys_text" >
+                           <span style="font-size: 160%; padding-left:10px;padding-right:10px; padding: 0;"><strong style="width: 100%; float: left; text-align: center;">Вопрос №{{question.id }} </strong> <br>{{ question.risk |safe }}</span>
 
                            <script>
                               // 1 == красный риск
@@ -607,7 +607,7 @@
                   <div class="container" style="padding-top:20px">
                      {% for question in page_obj_legal %}
                         <div id="risk_message_legal_{{forloop.counter}}" style="border-radius: 30px; padding:10px; margin:20px;width:90%; background-color:#FFFFFF; border: 4.5px solid #892222;font-size:12px;text-align: left; display:none" class="risks_legal_text">
-                           <span style="font-size: 160%; padding-left:10px;padding-right:10px"><strong>Вопрос №{{question.id }} </strong> <br>{{ question.risk |safe }}</span>
+                           <span style="font-size: 160%; padding-left:10px;padding-right:10px; padding: 0;"><strong style="width: 100%; float: left; text-align: center;">Вопрос №{{question.id }} </strong> <br>{{ question.risk |safe }}</span>
 
                            <script>
                               // 1 == красный риск

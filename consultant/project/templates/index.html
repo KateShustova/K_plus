@@ -109,29 +109,32 @@
          <h1 class="text-center" id="documents_page" style="padding-top: 80px; margin-top: -10px; margin-bottom: 80px; width: 80%; margin:0 auto;"><strong>Перед расчётом рисков, вам нужно собрать необходимую информацию:</strong>
          </h1>
          <br>
-         <div class="bg-image position-relative">
-            <img src="{% static 'img\background_docs.jpg' %}" width="100%" >
-            <div class="mask position-absolute top-0 end-0 bottom-0 start-0 " style="background-color: rgba(0, 0, 0, 0.5)">
-               <br>
-               <div class="cont-ref d-flex justify-content-center" width="100%">
-                  <div class="container" style="padding-top:20px">
-                     {% for doc in docs %}
-                     <div style="border-radius: 30px; padding:10px;width:90%; background-color:#FFFFFF;font-size:12px;text-align: center;">
+         <div class="cont-ref d-flex justify-content-center" width="100%" style="position: relative;/*! z-index: 1; */">
+            <div class="bg-image position-relative" style="position: absolute !important;z-index: -1;height: 100%;/*! display: inline-block; *//*! padding: 0; *//*! position: fixed !important; */width: 100%;height: 100%;/*! min-width: 100%; *//*! overflow: hidden; *//*! margin: auto; */">
+               <img src="/static/img/background_docs.jpg" style="height: 100%;/*! min-width: 100%; *//*! position: absolute; *//*! min-height: 100%; *//*! width: 100%; */" width="100%">
+               <div class="mask position-absolute top-0 end-0 bottom-0 start-0 " style="background-color: rgba(0, 0, 0, 0.5)">
+                  <br>
+               </div>
+            </div>
+            <div class="cont-ref d-flex justify-content-center" width="100%">
+               <div class="container" style="padding-top:20px; height:100%;">
+                  {% for doc in docs %}
+                     <div style="border-radius: 30px; width:90%; background-color:#FFFFFF;font-size:12px;text-align: center;">
                         <span style="font-size: 160%; padding-left:10px;padding-right:10px">{{ doc.content |safe }}</span>
                      </div>
                      <br>
-                     {% endfor %}
-                  </div>
-                  <div class="d-flex justify-content-center align-items-start" style="padding-top:60px">
-                     <p>
-                        <a href="{% static 'doc_list.pdf' %}" target="blank" rel="noopener noreferrer"><img src="{% static 'img/documents.png' %}" style="margin-left:13%"width="40%" alt="Пока не работает"></a>
-                        <br>
-                        <a href="{% static 'doc_list.pdf' %}" target="blank" rel="noopener noreferrer" class="download" download>Скачать документы</a>
-                     </p>
-                  </div>
+                  {% endfor %}
+               </div>
+               <div class="d-flex justify-content-center align-items-start" style="padding-top:60px">
+                  <p>
+                     <a href="{% static 'doc_list.pdf' %}" target="blank" rel="noopener noreferrer"><img src="{% static 'img/documents.png' %}" style="margin-left:13%"width="40%" alt="Пока не работает"></a>
+                     <br>
+                     <a href="{% static 'doc_list.pdf' %}" target="blank" rel="noopener noreferrer" class="download" download>Скачать документы</a>
+                  </p>
                </div>
             </div>
          </div>
+
          <!-- Стиль кнопок в тесте -->
          <style>
             .answer {
@@ -160,7 +163,7 @@
 
          <style>
          [data-tooltip] {
-         position: relative;
+            position: relative;
          }
          [data-tooltip].tooltipshow {
             position: relative;
@@ -174,23 +177,23 @@
             pointer-events: auto;
          }
          [data-tooltip]::after {
-         content: attr(data-tooltip);
-         position: absolute;
-         width: 300px;
-         left: 0; top: 0;
-         background: #f0f0f0;
-         color: #202020;
-         border-radius: 10px;
-         padding: 0.5em;
-         box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-         pointer-events: none;
-         opacity: 0;
-         transition: 0.5s;
-         visibility:0;
+            content: attr(data-tooltip);
+            position: absolute;
+            width: 300px;
+            left: 0; top: 0;
+            background: #f0f0f0;
+            color: #202020;
+            border-radius: 10px;
+            padding: 0.5em;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            pointer-events: none;
+            opacity: 0;
+            transition: 0.5s;
+            visibility:0;
          } 
          [data-tooltip]:hover::after {
-         opacity: 1;
-         top: 2em;
+            opacity: 1;
+            top: 2em;
          }
          </style>
          
@@ -207,7 +210,7 @@
          </script>
          
 
-
+         
          <script id="withIframe" type="text/template">
             <div id="d-q-ans-container-last" style="border-radius: 60px; padding-top: 50px; width: 800px; height: 300px; margin:0 auto; background-color:#FFFFFF;text-align: center;display: none">
                <div style="position: relative; top: 50%; transform: translateY(-60%);">
@@ -229,7 +232,7 @@
                   </div>
 
                <div style="position: absolute; top: 20px; left: 90%">
-                  <p class="mytooltip" onclick="myFunction(this);" data-tooltip="{{ employee.info |safe }}"><img align="right" style="margin-right:10px;" src="{% static 'img\question.png' %}"></p>
+                  <p class="mytooltip" onclick="" data-tooltip="{{ employee.info |safe }}"><a href="{{ employee.href }}"  target="blank" rel="noopener noreferrer"><img align="right" style="margin-right:10px;" src="{% static 'img\question.png' %}"></a></p>
                </div>
 
                <div style="position: absolute; bottom: 0; left: 25%">
@@ -309,7 +312,7 @@
                         </div>
 
                   <div style="position: absolute; top: 20px; left: 90%">
-                     <p class="mytooltip" onclick="myFunction(this);" data-tooltip="{{ employee.info |safe }}"><img align="right" style="margin-right:10px;" src="{% static 'img\question.png' %}"></p>
+                     <p class="mytooltip" onclick="" data-tooltip="{{ employee.info |safe }}"><a href="{{ employee.href }}"  target="blank" rel="noopener noreferrer"><img align="right" style="margin-right:10px;" src="{% static 'img\question.png' %}"></a></p>
                   </div>
 
                      <div style="position: absolute; bottom: 0; left: 25%">
@@ -648,7 +651,9 @@
       </style>
 
       <footer class="footer">
-         Данные, содержащиеся на сайте, являются справочными и носят информационный характер
+         <span>Данные, содержащиеся на сайте, являются справочными и носят информационный характер</span>
+         <br>
+         <span>Информация актуальна на 26.07.2023</span>
       </footer>
    </body>
 </html>

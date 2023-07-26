@@ -37,7 +37,7 @@ function update_risk_header(){
     var risk_list = JSON.parse(sessionStorage.getItem("risks"));
     var risk_level_phys_list = JSON.parse("[" + sessionStorage.getItem("risk_level_phys") + "]");
     var risk_level_legal_list = JSON.parse("[" + sessionStorage.getItem("risk_level_legal") + "]");
-    // Показать нужный заголовок 
+    // Показать нужный заголовок
 
     // если массив с рисками создан
     if (sessionStorage.getItem("risks")){
@@ -50,6 +50,7 @@ function update_risk_header(){
                 if (sessionStorage.getItem("now") == "21"){
                     console.log("show no_risk_test_finished_message_header")
                     document.getElementById('no_risk_test_finished_message_header').style.display = 'block';
+                    document.getElementById("download_risk").style.display = "none";
                     return null;
                 }
             }
@@ -59,12 +60,14 @@ function update_risk_header(){
                 if (sessionStorage.getItem("now") == "18"){
                     console.log("show no_risk_test_finished_message_header")
                     document.getElementById('no_risk_test_finished_message_header').style.display = 'block';
+                    document.getElementById("download_risk").style.display = "none";
                     return null;
                 }
             }
 
             console.log("show no_risk_but_questions_left_message_header")
             document.getElementById('no_risk_but_questions_left_message_header').style.display = 'block';
+            document.getElementById("download_risk").style.display = "none";
         }
         // Если риски есть
         else{
@@ -73,11 +76,17 @@ function update_risk_header(){
                     if(risk_level_phys_list[risk_list[i]-1]===1){
                         console.log("show high_risk_message_header")
                         document.getElementById('high_risk_message_header').style.display = 'block';
+                        document.getElementById("download_risk").style.display = "block";
                         return null;
                     }
                 }
                 console.log("show low_risk_message_header")
                 document.getElementById('low_risk_message_header').style.display = 'block';
+                document.getElementById("download_risk").style.display = "block";
+//                if (!document.querySelector("#risks_legal_text")){
+//                    document.getElementById("download_risk").style.display = "none";
+//                }
+
                 return null;
             }
             else{
@@ -86,20 +95,26 @@ function update_risk_header(){
                         if(risk_level_legal_list[risk_list[i]-1]===1){
                             console.log("show high_risk_message_header")
                             document.getElementById('high_risk_message_header').style.display = 'block';
+                            document.getElementById("download_risk").style.display = "block";
                             return null;
                         }
                     }
                     console.log("show low_risk_message_header")
                     document.getElementById('low_risk_message_header').style.display = 'block';
+                    document.getElementById("download_risk").style.display = "block";
+//                    if (!document.querySelector("#risks_phys_text")){
+//                        document.getElementById("download_risk").style.display = "none";
+//                    }
                     return null;
-                }   
+                }
             }
         }
     }
     else{
         console.log("show no_risk_but_questions_left_message_header")
         document.getElementById('no_risk_but_questions_left_message_header').style.display = 'block';
+        document.getElementById("download_risk").style.display = "none";
     }
-    
-    
+
+
 }

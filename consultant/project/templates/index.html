@@ -129,7 +129,7 @@
                   <p>
                      <a href="{% static 'doc_list.pdf' %}" target="blank" rel="noopener noreferrer"><img src="{% static 'img/documents.png' %}" style="margin-left:13%"width="40%" alt="Пока не работает"></a>
                      <br>
-                     <a href="{% static 'doc_list.pdf' %}" target="blank" rel="noopener noreferrer" class="download" download>Скачать документы</a>
+                     <a href="{% static 'doc_list.pdf' %}" target="blank" rel="noopener noreferrer" class="download" style="margin-left:0%" download>Скачать документы</a>
                   </p>
                </div>
             </div>
@@ -221,7 +221,7 @@
             <!-- Кнопки теста для вопросов физиков -->
 
             {% for employee in page_obj_phys %}
-            <div id="d-q-ans-container_{{forloop.counter}}" class="num" style="position: relative;border-radius: 60px; padding-top: 35px; width: 950px; height: 450px; margin:0 auto; background-color:#FFFFFF;text-align: center;">
+            <div id="d-q-ans-container_{{forloop.counter}}" class="num" style="position: relative;border-radius: 60px; padding-top: 35px; width: 90%; height: 450px; margin:0 auto; background-color:#FFFFFF;text-align: center;">
 
                <div style="position: relative; top: 50%; transform: translateY(-80%);">
                <span style="font-size: 200%; padding-left:10px;padding-right:10px" class="qtext_{{forloop.counter}}" >{{ employee.content }}</span>
@@ -347,7 +347,7 @@
             <br>
             <!-- Блок с первым вопросом (юр/физ) -->
             <div class="qcontainer " id="qcont" width="100%">
-               <div id="d-q-ans-container_0" class="num" style="border-radius: 60px; padding-top: 35px; width: 850px; margin:0 auto; background-color:#FFFFFF;text-align: center;">
+               <div id="d-q-ans-container_0" class="num" style="border-radius: 60px; padding-top: 35px; width: 90%; margin:0 auto; background-color:#FFFFFF;text-align: center;">
                   <h2 style="font-size=100%; margin-bottom: 30px;" class="qtext_0" >Продавец является физическим или юридическим лицом?</h2>
                   <div>
                      <br><br>
@@ -368,7 +368,7 @@
                </div>
             </div>
             <!-- Счетчик рисков -->
-            <div id="risk-count" class = "risks" style="border-radius: 60px; padding-top: 8px; padding-bottom: 12px; width: 600px; margin:0 auto; background-color:#E3E0E0; border-top-left-radius: 0;border-top-right-radius: 0;text-align: center;">
+            <div id="risk-count" class = "risks" style="border-radius: 60px; padding-top: 8px; padding-bottom: 12px; width: 60%; margin:0 auto; background-color:#E3E0E0; border-top-left-radius: 0;border-top-right-radius: 0;text-align: center;">
                <span style="font-size: 180%; padding-left:10px;padding-right:10px;" id="risks" ><strong> </strong></span>
                {% load static %}
                <script src="{% static 'js_code/check.js' %}"></script>

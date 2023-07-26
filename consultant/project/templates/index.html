@@ -127,11 +127,7 @@
                   <p>
                      <a href="{% static 'doc_list.pdf' %}" target="blank" rel="noopener noreferrer"><img src="{% static 'img/documents.png' %}" style="margin-left:13%; width:40%" alt="Пока не работает"></a>
                      <br>
-<<<<<<< HEAD
                      <a href="{% static 'doc_list.pdf' %}" target="blank" rel="noopener noreferrer" class="download" style="margin-left:0%" download>Скачать документы</a>
-=======
-                     <a href="{% static 'doc_list.pdf' %}" target="blank" style="margin-left:13%; font-size: 1.25vw;" rel="noopener noreferrer" class="download" download>Скачать документы</a>
->>>>>>> 5a4fe23 (update layout)
                   </p>
                </div>
             </div>
@@ -221,12 +217,7 @@
                   </div>
                </div>
             {% for employee in page_obj_phys %}
-<<<<<<< HEAD
-            <div id="d-q-ans-container_{{forloop.counter}}" class="num" style="position: relative;border-radius: 60px; padding-top: 35px; width: 90%; height: 450px; margin:0 auto; background-color:#FFFFFF;text-align: center;">
-=======
                <div id="d-q-ans-container_{{forloop.counter}}" class="num" style="position: relative;border-radius: 60px; padding-top: 35px; width: 80%; height: 20vw; margin:0 auto; background-color:#FFFFFF;text-align: center;">
->>>>>>> 5a4fe23 (update layout)
-
                      <div style="position: relative; top: 50%; transform: translateY(-80%);">
                      <span style="font-size: 1.5vw; padding-left:10px;padding-right:10px" class="qtext_{{forloop.counter}}" >{{ employee.content }}</span>
                         </div>
@@ -355,15 +346,9 @@
             <br>
             <br>
             <!-- Блок с первым вопросом (юр/физ) -->
-<<<<<<< HEAD
-            <div class="qcontainer " id="qcont" width="100%">
-               <div id="d-q-ans-container_0" class="num" style="border-radius: 60px; padding-top: 35px; width: 90%; margin:0 auto; background-color:#FFFFFF;text-align: center;">
-                  <h2 style="font-size=100%; margin-bottom: 30px;" class="qtext_0" >Продавец является физическим или юридическим лицом?</h2>
-=======
             <div class="qcontainer " id="qcont" style="text-align: center; width: 100%;">
                <div id="d-q-ans-container_0" class="num" style="margin:0 auto;border-radius: 60px; padding-top: 35px; width: 75%; margin:0 auto; background-color:#FFFFFF;text-align: center;">
                   <h2 style="font-size=200%; margin-bottom: 2vw;" class="qtext_0" >Продавец является физическим или юридическим лицом?</h2>
->>>>>>> 5a4fe23 (update layout)
                   <div>
                      <br><br>
                      <div class="rb-chk-container otp-row_0" style="text-align: center;">
@@ -383,13 +368,8 @@
                </div>
             </div>
             <!-- Счетчик рисков -->
-<<<<<<< HEAD
-            <div id="risk-count" class = "risks" style="border-radius: 60px; padding-top: 8px; padding-bottom: 12px; width: 60%; margin:0 auto; background-color:#E3E0E0; border-top-left-radius: 0;border-top-right-radius: 0;text-align: center;">
-               <span style="font-size: 180%; padding-left:10px;padding-right:10px;" id="risks" ><strong> </strong></span>
-=======
             <div id="risk-count" class = "risks" style="border-radius: 4vw; padding-top: 8px; padding-bottom: 12px; width: 60%; margin:0 auto; background-color:#E3E0E0; border-top-left-radius: 0;border-top-right-radius: 0;text-align: center;">
                <span style="font-size: 1.5vw; padding-left:10px;padding-right:10px;" id="risks" ><strong> </strong></span>
->>>>>>> 5a4fe23 (update layout)
                {% load static %}
                <script src="{% static 'js_code/check.js' %}"></script>
                <!-- Логика счетчика рисков -->
@@ -425,6 +405,32 @@
                         location.href = "/#test_page";
                         window.location.reload();
                         sessionStorage.clear();
+
+                        let arr = [];
+                        {% for question in page_obj_phys %}
+                           arr.push({{question.correct_answer}});
+                        {% endfor %}
+                        sessionStorage.setItem("phys", arr);
+
+                        let arr1 = [];
+                        {% for question in page_obj_legal %}
+                           arr1.push({{question.correct_answer}});
+                        {% endfor %}
+                        sessionStorage.setItem("legal", arr1);
+
+                        let risk_level_phys_arr = [];
+                        {% for question in page_obj_phys %}
+                           risk_level_phys_arr.push({{question.risk_level}});
+                        {% endfor %}
+                        sessionStorage.setItem("risk_level_phys", risk_level_phys_arr);
+
+                        let risk_level_legal_arr = [];
+                        {% for question in page_obj_phys %}
+                           risk_level_legal_arr.push({{question.risk_level}});
+                        {% endfor %}
+                        sessionStorage.setItem("risk_level_legal", risk_level_legal_arr);
+
+
                         var risk_legal_num = document.querySelectorAll(".risks_legal_text");
                         var risk_phys_num = document.querySelectorAll(".risks_phys_text");
                         for (let i = 0; i < risk_legal_num.length; i++) {

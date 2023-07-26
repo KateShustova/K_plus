@@ -124,7 +124,7 @@
                   </div>
                   <div class="d-flex justify-content-center align-items-start" style="padding-top:60px">
                      <p>
-                        <a href="{% static 'doc_list.pdf' %}" target="blank" rel="noopener noreferrer"><img src="{% static 'img/documents.png' %}" style="margin-left:44px"width="40%" alt="Пока не работает"></a>
+                        <a href="{% static 'doc_list.pdf' %}" target="blank" rel="noopener noreferrer"><img src="{% static 'img/documents.png' %}" style="margin-left:13%"width="40%" alt="Пока не работает"></a>
                         <br>
                         <a href="{% static 'doc_list.pdf' %}" target="blank" rel="noopener noreferrer" class="download" download>Скачать документы</a>
                      </p>
@@ -160,7 +160,7 @@
 
          <style>
          [data-tooltip] {
-         position: relative; 
+         position: relative;
          }
          [data-tooltip]::after {
          content: attr(data-tooltip);
@@ -175,17 +175,40 @@
          pointer-events: none;
          opacity: 0;
          transition: 0.5s;
+         visibility:0;
          } 
          [data-tooltip]:hover::after {
          opacity: 1;
          top: 2em;
          }
-         [data-tooltip]:focus::after {
-         opacity:1;
-         visibility: visible;
-         color:#ff0000;
-         }
+         [data-tooltip]:active::after {
+            visibility: visible;
+            display: block;
+            pointer-events: auto;
+            color:red;
+            {% comment %} opacity:1; {% endcomment %}
+            top: 2em;
+          }
+          [data-tooltip]{
+            opacity:1 !important;
+            color: #0000ff !important;
+            visibility: visible !important;
+          }
          </style>
+
+         <script>
+            var tooltip = document.querySelector('.mytooltip')
+            console.log(tooltip)
+            tooltip.addEventListener('click', function() {
+            if (this.classList.contains('active')) {
+               this.classList.remove('active');
+            } else {
+               this.classList.add('active');
+               console.log("fuck")
+            }
+            
+            });
+         </script>
 
          <script id="withIframe" type="text/template">
             <div id="d-q-ans-container-last" style="border-radius: 60px; padding-top: 50px; width: 800px; height: 300px; margin:0 auto; background-color:#FFFFFF;text-align: center;display: none">
@@ -208,8 +231,8 @@
                   </div>
 
                <div style="position: absolute; top: 20px; left: 90%">
-               <p data-tooltip="{{ employee.info }}"><img align="right" style="margin-right:10px;" src="{% static 'img\question.png' %}"></p>
-                  </div>
+                  <p class="tooltipshow" data-tooltip="{{ employee.info }}"><img align="right" style="margin-right:10px;" src="{% static 'img\question.png' %}"></p>
+               </div>
 
                <div style="position: absolute; bottom: 0; left: 25%">
             <div style="position: relative; top: 50%; transform: translateY(0%);">
@@ -540,7 +563,7 @@
                   <div class="container" style="padding-top:20px">
                      {% for question in page_obj_phys %}
                         <div id="risk_message_phys_{{forloop.counter}}" style="border-radius: 30px; padding:10px; margin:20px;width:90%; background-color:#FFFFFF; border: 4.5px solid #892222;font-size:12px;text-align: center; display:none" class="risks_phys_text" >
-                           <span style="font-size: 160%; padding-left:10px;padding-right:10px">Вопрос {{question.id }} : {{ question.risk |safe }}</span>
+                           <span style="font-size: 160%; padding-left:10px;padding-right:10px"><strong>Вопрос №{{question.id }} </strong> <br> {{ question.risk |safe }}</span>
 
                            <script>
                               // 1 == красный риск
@@ -582,8 +605,8 @@
                <div class="cont-ref d-flex justify-content-center" width="100%">
                   <div class="container" style="padding-top:20px">
                      {% for question in page_obj_legal %}
-                        <div id="risk_message_legal_{{forloop.counter}}" style="border-radius: 30px; padding:10px; margin:20px;width:90%; background-color:#FFFFFF; border: 4.5px solid #892222;font-size:12px;text-align: center; display:none" class="risks_legal_text">
-                           <span style="font-size: 160%; padding-left:10px;padding-right:10px">Вопрос {{question.id }} : {{ question.risk |safe }}</span>
+                        <div id="risk_message_legal_{{forloop.counter}}" style="border-radius: 30px; padding:10px; margin:20px;width:90%; background-color:#FFFFFF; border: 4.5px solid #892222;font-size:12px;text-align: left; display:none" class="risks_legal_text">
+                           <span style="font-size: 160%; padding-left:10px;padding-right:10px"><strong>Вопрос №{{question.id }} </strong> <br>{{ question.risk |safe }}</span>
 
                            <script>
                               // 1 == красный риск

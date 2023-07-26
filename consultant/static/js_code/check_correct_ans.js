@@ -16,11 +16,11 @@ function check_correct_answer(){
                             hide_risk_message(parseInt(key),"legal");
 
                             update_data_in_localstorage(parseInt(key), value, true);
-                            element.style = "border-radius: 40px; height:50px; width:50px; color:#01010a;margin-right: 25px;border: 2.5px solid #209404;font-size: 25px;";
+                            element.style = "border-radius: 60%; height:2.7vw; width:6%; color:#01010a;margin-right: 25px;border: 2.5px solid #209404;font-size: 1.25vw;text-align: center;";
 
                         // Если ответ неверный закрасить кружок красным и показать риск
                         } else {
-                            element.style = "border-radius: 40px; height:50px; width:50px; color:#01010a;margin-right: 25px;border: 2.5px solid #892222;font-size: 25px;";
+                            element.style = "border-radius: 60%; height:2.7vw; width:6%; color:#01010a;margin-right: 25px;border: 2.5px solid #892222;font-size: 1.25vw;text-align: center;";
                             save_data_to_localstorage(parseInt(key));
                             
                             display_risk_message(parseInt(key),"legal");
@@ -30,13 +30,13 @@ function check_correct_answer(){
                         // Если ответ верный закрасить кружок зеленым и спрятать риск
                         if (array_values_phys[parseInt(key)-1] == value) {
                             update_data_in_localstorage(parseInt(key), value, true);
-                            element.style = "border-radius: 40px; height:50px; width:50px; color:#01010a;margin-right: 25px;border: 2.5px solid #209404;font-size: 25px;";
+                            element.style = "border-radius: 60%; height:2.7vw; width:6%; color:#01010a;margin-right: 25px;border: 2.5px solid #209404;font-size: 1.25vw;text-align: center;";
 
                             hide_risk_message(parseInt(key),"phys");
                         
                         // Если ответ неверный закрасить кружок красным и показать риск
                         } else {
-                            element.style = "border-radius: 40px; height:50px; width:50px; color:#01010a;margin-right: 25px;border: 2.5px solid #892222;font-size: 25px;";
+                            element.style = "border-radius: 60%; height:2.7vw; width:6%; color:#01010a;margin-right: 25px;border: 2.5px solid #892222;font-size: 1.25vw;text-align: center;";
                             save_data_to_localstorage(parseInt(key));
 
                             display_risk_message(parseInt(key),"phys");

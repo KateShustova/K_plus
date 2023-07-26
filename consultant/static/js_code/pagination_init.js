@@ -24,12 +24,12 @@ function pagination_init(cnt, qc) {
         }
         if (!sessionStorage.getItem(i)) {
             if (set.has(i)) {
-                element.style = "border-radius: 40px; height:50px; width:50px; color:#01010a;margin-right: 25px;border: 2.5px solid #892222;font-size: 25px;";
+                element.style = "border-radius: 60%; height:2.7vw; width:6%; color:#01010a;margin-right: 25px;border: 2.5px solid #892222;font-size: 1.25vw;text-align: center;";
             } else {
-                element.style = "border-radius: 40px; height:50px; width:50px; color:#01010a;margin-right: 25px;border: 2.5px solid #413E3E;font-size: 25px;";
+                element.style = "border-radius: 60%; height:2.7vw; width:6%; color:#01010a;margin-right: 25px;border: 2.5px solid #413E3E;font-size: 1.25vw;text-align: center;";
             }
         } else {
-            element.style = "border-radius: 40px; height:50px; width:50px; color:#01010a;margin-right: 25px;border: 2.5px solid #209404;font-size: 25px;";
+            element.style = "border-radius: 60%; height:2.7vw; width:6%; color:#01010a;margin-right: 25px;border: 2.5px solid #209404;font-size: 1.25vw;text-align: center;";
         }
     }
     element_first = document.getElementById("numbers_1");
